@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoomTable extends Migration
+class CreateImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,9 @@ class CreateRoomTable extends Migration
      */
     public function up()
     {
-        Schema::create('room', function (Blueprint $table) {
+        Schema::create('property_image', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('room_type_id');
-            $table->float('size_x')->nullable(); 
-            $table->float('size_y')->nullable(); 
-            $table->mediumText('map')->nullable(); 
+            $table->integer('property_id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateRoomTable extends Migration
      */
     public function down()
     {
-        Schema::drop('property');
+        Schema::drop('property_image');
     }
 }

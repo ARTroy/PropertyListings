@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+Route::get('/property/{id}', 'PropertyController@view');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('user/properties', 'PropertyControllerr@profileIndex');
+    Route::get('admin/properties/{id}/edit', 'PropertyControllerr@edit');
+    Route::post('admin/properties/store', 'PropertyControllerr@updateStore');
+});
+
+Route::group(['middleware' => 'admin'],  function(){
+		Route::get('admin/properties', 'PropertyControllerr@index');
+		Route::get('admin/properties/{id}/edit', 'PropertyControllerr@edit');
+		Route::post('admin/properties/store', 'PropertyControllerr@updateStore');
+		Route::resource('admin/invitecodes', 'InviteCodeController');
 });

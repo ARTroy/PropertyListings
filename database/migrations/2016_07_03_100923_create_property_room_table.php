@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertyRoom extends Migration
+class CreatePropertyRoomTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,6 +26,6 @@ class CreatePropertyRoom extends Migration
      */
     public function down()
     {
-        Schema::drop('property');
+        Schema::drop('property_room');
     }
 }

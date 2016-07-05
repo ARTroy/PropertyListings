@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypePropertyTypeRoomType extends Migration
+class CreateUserInviteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateTypePropertyTypeRoomType extends Migration
      */
     public function up()
     {
-        Schema::create('property_type_room_type', function (Blueprint $table) {
+        Schema::create('user_invite', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('property_type_id');
-            $table->integer('room_type_id');
+            $table->string('code');
+            $table->integer('user_id')->nullable();
+            $table->timestamp('claimed_at')->nullable();    
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateTypePropertyTypeRoomType extends Migration
      */
     public function down()
     {
-        Schema::drop('property');
+        Schema::drop('user_invite');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertyTypeTable extends Migration
+class CreateRoomTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreatePropertyTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('property_type', function (Blueprint $table) {
+        Schema::create('room_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type_name');
             $table->string('display_class');
@@ -27,6 +27,6 @@ class CreatePropertyTypeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('property');
+        Schema::drop('room_type');
     }
 }
