@@ -16,8 +16,8 @@ class RedirectIfNotAdmin
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next, $guard = 'admin')
-	{
-	    if (!Auth::guard($guard)->check()) {
+	{	//!Auth::guard($guard)->check()
+	    if ( !is_object(Auth::user()) || !Auth::user()->admin || !Auth::guard($guard)->check() ) {
 	        return redirect('/');
 	    }
 
