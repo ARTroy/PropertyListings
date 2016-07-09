@@ -1,13 +1,13 @@
 @font-face {
   font-family: "railway";
-  src: url("../fonts/Raleway-Regular") format("truetype");
+  src: url("../fonts/Raleway-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "railway-bold";
-  src: url("../fonts/Raleway-Bold.eot");
+  src: url("../fonts/Raleway-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -22,6 +22,10 @@
     display: inline-table;
 }
 
-h2 {
-	font
+body h1, body h2, body h3 {
+	font-family:railway-bold;
+}
+
+div.alert ul {
+  margin-bottom: 0px;
 }

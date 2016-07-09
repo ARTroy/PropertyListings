@@ -13,6 +13,7 @@
             @endforeach
         @endif
         </ul>
+        <button class="close-button" data-close aria-label="Dismiss alert">&times;</button>
     </div>
 @endif
 @if(session('info'))
@@ -20,5 +21,6 @@
         <ul>
             <li>{{ session('info') }}</li>
         </ul>
+        <button class="close-button" data-close aria-label="Dismiss info">&times;</button>
     </div>
 @endif
