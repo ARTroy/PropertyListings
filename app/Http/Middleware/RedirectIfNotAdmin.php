@@ -18,7 +18,8 @@ class RedirectIfNotAdmin
 	public function handle($request, Closure $next, $guard = 'admin')
 	{	//!Auth::guard($guard)->check()
 	    if ( !is_object(Auth::user()) || !Auth::user()->admin || !Auth::guard($guard)->check() ) {
-	        return redirect('/');
+	    	
+	        return redirect('/')->with('custom_errors', ['Log in to gain access to this area']);
 	    }
 
 	    return $next($request);

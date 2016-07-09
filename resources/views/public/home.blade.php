@@ -1,6 +1,11 @@
-@extends('layout')
+@extends('common.layout')
 
 @section('content')
-    <p>This is my body content.</p>
+	
+    <p>
+    	<a href="{{action('InviteController@claim_create')}}">Claim</a>
+    	body content.
+    </p>
+    
 @endsection
 

@@ -13,14 +13,14 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/property/{id}', 'PropertyController@view');
-Route::get('/claim', 'InviteCodeController@create');
-Route::post('/claim', 'InviteCodeController@store');
+Route::get('/claim', 'InviteController@claim_create');
+Route::post('/claim', 'InviteController@claim_store');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('user/properties', 'PropertyControllerr@profileIndex');
-    Route::get('admin/properties/{id}/edit', 'PropertyControllerr@edit');
-    Route::post('admin/properties/store', 'PropertyControllerr@store');
-    Route::post('admin/properties/store/rooms', 'PropertyControllerr@rooms');
+    Route::get('/properties', 'PropertyControllerr@profileIndex');
+    Route::get('/properties/{id}/edit', 'PropertyControllerr@edit');
+    Route::post('/properties/store', 'PropertyControllerr@store');
+    Route::post('/properties/store/rooms', 'PropertyControllerr@rooms');
 });
 
 Route::group(['middleware' => 'admin'],  function(){
@@ -28,9 +28,8 @@ Route::group(['middleware' => 'admin'],  function(){
 	Route::get('admin/properties/{id}/edit', 'PropertyControllerr@edit');
 	Route::post('admin/properties/store', 'PropertyControllerr@updateStoreAny');
 
-	Route::resource('admin/invitecodes', 'InviteCodeController');
+	Route::get('admin/invites', 'InviteController@index_create');
 
 	Route::post('admin/user/create', 'AuthController@create');
 	Route::post('admin/user/store', 'AuthController@store');
-
 });

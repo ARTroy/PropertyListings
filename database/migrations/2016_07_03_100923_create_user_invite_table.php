@@ -15,6 +15,7 @@ class CreateUserInviteTable extends Migration
         Schema::create('user_invite', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
+            $table->string('invite_email')->nullable();
             $table->integer('user_id')->nullable();
             $table->timestamp('claimed_at')->nullable();    
             $table->timestamps();

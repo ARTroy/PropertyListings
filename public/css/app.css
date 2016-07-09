@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "railway";
+  src: url("../fonts/Raleway-Regular") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "railway-bold";
+  src: url("../fonts/Raleway-Bold.eot");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .header {
 	position: relative;
@@ -7,4 +20,8 @@
     margin: auto;
     width: 100%;
     display: inline-table;
+}
+
+h2 {
+	font
 }

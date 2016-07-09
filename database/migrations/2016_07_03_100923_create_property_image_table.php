@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImageTable extends Migration
+class CreatePropertyImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateImageTable extends Migration
     {
         Schema::create('property_image', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('property_id');
+            $table->integer('property_id')->nullable();
             $table->timestamps();
         });
     }
