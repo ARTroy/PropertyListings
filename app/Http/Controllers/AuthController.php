@@ -11,34 +11,14 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
     use ThrottlesLogins;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/';
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
+
     public function create(Request $request, User $user)
     {
-        $validator = Validator::make( $request->all(), [
+        $data = $request->all();
+        $validator = Validator::make( $data, [
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -52,8 +32,12 @@ class AuthController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
-        $user->admin = 1;
-        $user->api_token = str_random(60);
+        $user->admin = $data['admin'];
+        if(isset($data['admin'])){
+            $user->api_token = str_random(60);
+        } else {
+             $user->api_token = null;
+        }
 
         return back();
     }

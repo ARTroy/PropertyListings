@@ -3,7 +3,6 @@
     <div class="alert callout" data-closable>
         <ul>
         @if(count($errors) > 0)   
-
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
@@ -17,7 +16,7 @@
         <button class="close-button" data-close aria-label="Dismiss alert">&times;</button>
     </div>
 @endif
-@if(count($errors) || session('info'))
+@if(session('info'))
     <div class="primary callout" data-closable>
         <ul>
             <li>{{ session('info') }}</li>
