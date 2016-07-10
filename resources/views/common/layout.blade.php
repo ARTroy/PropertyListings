@@ -9,29 +9,36 @@
                 <div class="row">
                     <div class="small-6 columns">
                     </div>
+                   
                     <div class="medium-6 columns">
                         <div class="row">
-                            <form method="POST" action="{{action('AuthController@login')}}">
-                            {!! csrf_field() !!}
-                            <div class="medium-5 columns">
-                                <label>Email
-                                    <input type="email" name="email">
-                                </label>
-                            </div>
-                            <div class="medium-5 columns">
-                                <label>Password
-                                    <input type="password" name="password">
-                                </label>
-                            </div>
-                            <div class="medium-5 columns">
-                                
-                            </div>
-                            <button type="submit">Login</button>                   
-                            </form>
+                            @if(Auth::check())
+                                You are logged in!
+                            @else
+                                <form method="POST" action="{{action('AuthController@login')}}">
+                                {!! csrf_field() !!}
+
+                                <div class="medium-offset-1 medium-5 columns">
+                                    <label>Email
+                                        <input type="email" name="email">
+                                    </label>
+                                </div>
+                                <div class="medium-4 columns">
+                                    <label>Password
+                                        <input type="password" name="password">
+                                    </label>
+                                </div>
+                                <div class="medium-2 columns">
+                                    <button  type="submit"
+                                        style="margin-top: 21px; border: 1px solid black; padding: 12px;"
+                                    >Login</button>
+                                </div>
+                                </form>
+                            @endif
                         </div>
-                    </div>    
+                    </div>  
                 </div>
-               
+                {{-- <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a> --}}
             </div>
             <div class="row">
                 <div class="small-12 columns">
