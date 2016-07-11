@@ -10,25 +10,35 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['middleware' =>'web'], function(){
+	Route::get('/', 'HomeController@index');
+	Route::get('/property/{id}', 'PropertyController@view');
 
-Route::get('/', 'HomeController@index');
-Route::get('/property/{id}', 'PropertyController@view');
-Route::get('/claim', 'InviteController@claim_create');
-Route::post('/claim', 'InviteController@claim_store');
-Route::post('/login', 'AuthController@login');
+	// Public invite code claim
+	Route::get('/claim', 'InviteController@claim_create');
+	Route::post('/claim', 'InviteController@claim_store');
 
-Route::group(['middleware' => ['auth', 'web']], function(){
-    Route::get('/properties', 'PropertyControllerr@profileIndex');
-    Route::get('/properties/{id}/edit', 'PropertyControllerr@edit');
-    Route::post('/properties/store', 'PropertyControllerr@store');
-    Route::post('/properties/store/rooms', 'PropertyControllerr@rooms');
-});
+	// Public auth
+	Route::post('/login', 'AuthController@login');
+	Route::get('password/reset/{token?}', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@showResetForm']);
+	Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
+	Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
 
-Route::group(['middleware' => ['admin', 'web']],  function(){
-	Route::get('admin/properties', 'PropertyControllerr@index');
-	Route::get('admin/properties/{id}/edit', 'PropertyControllerr@edit');
-	Route::post('admin/properties/store', 'PropertyControllerr@updateStoreAny');
+	//User property
+	Route::group(['middleware' => ['auth']], function(){
+	    Route::get('/properties', 'PropertyControllerr@profileIndex');
+	    Route::get('/properties/{id}/edit', 'PropertyControllerr@edit');
+	    Route::post('/properties/store', 'PropertyControllerr@store');
+	    Route::post('/properties/store/rooms', 'PropertyControllerr@rooms');
+	});
 
-	Route::get('admin/invites', 'InviteController@index_create');
-	Route::post('admin/user/create', 'AuthController@create');
+	//Admin
+	Route::group(['middleware' => ['admin']],  function(){
+		Route::get('admin/properties', 'PropertyControllerr@index');
+		Route::get('admin/properties/{id}/edit', 'PropertyControllerr@edit');
+		Route::post('admin/properties/store', 'PropertyControllerr@updateStoreAny');
+
+		Route::get('admin/invites', 'InviteController@index_create');
+		Route::post('admin/user/create', 'AuthController@create');
+	});
 });

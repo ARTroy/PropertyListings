@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<form action="{{ action('InviteController@claim_store') }}" method="POST" data-abide novalidate>
+	<form action="{{ action('PropertyController@store') }}" method="POST" data-abide novalidate>
 		{{ csrf_field() }}
 		<div class='row'>
 			<div class="small-12 medium-6 columns">

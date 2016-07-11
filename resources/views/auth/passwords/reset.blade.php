@@ -1,5 +1,9 @@
 @extends('common.layout')
 
+@section('header')
+    <div class="header">{{-- include this as empty if the main header isnt needed --}}</div>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
