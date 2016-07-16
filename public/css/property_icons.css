@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "property";
-  src:url("../fonts/property.eot");
-  src:url("../fonts/property.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/property.woff") format("woff"),
-    url("../fonts/property.ttf") format("truetype"),
-    url("../fonts/property.svg#property") format("svg");
+  src:url("fonts/property.eot");
+  src:url("fonts/property.eot?#iefix") format("embedded-opentype"),
+    url("fonts/property.woff") format("woff"),
+    url("fonts/property.ttf") format("truetype"),
+    url("fonts/property.svg#property") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -38,20 +38,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-bungalow:before {
-  content: "\61";
-}
 .icon-hall:before {
   content: "\62";
 }
-.icon-office:before {
+.icon-office-room:before {
   content: "\63";
 }
 .icon-kitchen:before {
   content: "\64";
-}
-.icon-industry:before {
-  content: "\65";
 }
 .icon-air-con:before {
   content: "\66";
@@ -83,20 +77,11 @@
 .icon-tennis:before {
   content: "\6f";
 }
-.icon-pool:before {
+.icon-pool-2:before {
   content: "\70";
-}
-.icon-shower:before {
-  content: "\71";
-}
-.icon-toilet:before {
-  content: "\72";
 }
 .icon-dining:before {
   content: "\73";
-}
-.icon-cinema:before {
-  content: "\74";
 }
 .icon-handshake:before {
   content: "\75";
@@ -116,7 +101,7 @@
 .icon-sofa:before {
   content: "\7a";
 }
-.icon-block:before {
+.icon-apartment:before {
   content: "\41";
 }
 .icon-house-location:before {
@@ -173,14 +158,8 @@
 .icon-floor-plan:before {
   content: "\53";
 }
-.icon-block-2:before {
-  content: "\54";
-}
 .icon-city:before {
   content: "\55";
-}
-.icon-mansion:before {
-  content: "\56";
 }
 .icon-land:before {
   content: "\57";
@@ -212,9 +191,6 @@
 .icon-decoration:before {
   content: "\36";
 }
-.icon-arcade:before {
-  content: "\37";
-}
 .icon-noun-75594-cc:before {
   content: "\34";
 }
@@ -223,4 +199,34 @@
 }
 .icon-room:before {
   content: "\21";
+}
+.icon-mansion:before {
+  content: "\61";
+}
+.icon-office:before {
+  content: "\22";
+}
+.icon-bungalow:before {
+  content: "\39";
+}
+.icon-house:before {
+  content: "\56";
+}
+.icon-factory:before {
+  content: "\23";
+}
+.icon-apartment-2:before {
+  content: "\65";
+}
+.icon-toilet:before {
+  content: "\71";
+}
+.icon-bathroom:before {
+  content: "\72";
+}
+.icon-games:before {
+  content: "\74";
+}
+.icon-pool:before {
+  content: "\54";
 }

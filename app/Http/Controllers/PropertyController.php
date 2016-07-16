@@ -5,12 +5,12 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-	public function __construct(Property $property) {
-        $this->property = $property;
-    }
 
 	public function profileIndex(){
-		return view('public.property_profile');
+		$user = Auth::user();
+		$properties = $user->properties,
+		return view('public.property_profile', 
+			['user'=>$user, '$properties'=>$properties]);
 	}
 
 	public function view($id){
@@ -21,7 +21,10 @@ class PropertyController extends Controller
 		return view('user.property.edit');
 	}
 
-	public function store(){
-		return view('user.property.store');
+	public function create(){
+		$user = Auth::user();
+		$property_types = PropertyType::all();
+		return view('user.property.create', 
+			['user'=>$user,'property_types'=>$property_types]);
 	}
 }
