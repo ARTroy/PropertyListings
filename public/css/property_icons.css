@@ -2,10 +2,10 @@
 
 @font-face {
   font-family: "property";
-  src:url("fonts/property.eot");
-  src:url("fonts/property.eot?#iefix") format("embedded-opentype"),
-    url("fonts/property.woff") format("woff"),
-    url("fonts/property.ttf") format("truetype"),
+  src:url("../fonts/property.eot");
+  src:url("../fonts/property.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/property.woff") format("woff"),
+    url("../fonts/property.ttf") format("truetype"),
     url("fonts/property.svg#property") format("svg");
   font-weight: normal;
   font-style: normal;

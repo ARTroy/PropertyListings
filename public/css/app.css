@@ -1,16 +1,17 @@
 @font-face {
-  font-family: "railway";
-  src: url("../fonts/Raleway-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "railway";
+    src: url("../fonts/Raleway-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "railway-bold";
-  src: url("../fonts/Raleway-Bold.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "railway-bold";
+    src: url("../fonts/Raleway-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
+
 /* B1F6CB */
 .header {
 	position: relative;
@@ -22,10 +23,98 @@
     display: inline-table;
 }
 
-body h1, body h2, body h3 {
+body.over {
+    background-color:#2b2826; 
+}
+
+body.over *{
+    color:#b8aa84;
+    font-family:railway;
+}
+
+body h1, body h2, body h3,body h4, body h5 {
 	font-family:railway-bold;
 }
 
+i.arrowheader {
+    font-size: 25px;
+    top: -5px;
+    position: relative;
+}
+i.clipheader {
+    margin: 5px;
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 6px #73b592;
+    font-size: 30px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    padding-bottom: 12px;
+    top: -5px;
+    position: relative;
+    line-height: 1;
+}
+
+p.linkheader {
+    display: inline-block;
+    font-size: 20px;
+    top: -3px;
+    position: relative;
+    padding-right: 3px;
+}
+i.househeader {
+    margin:5px;
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 6px #73b592;
+    font-size: 30px;
+    padding-left: 5px;
+    padding-right: 7px;
+    
+}
+i::before{
+    top:5px;
+    position: relative;
+}
+
+.nav {
+    background-color: #fffaf5;
+    min-height: 40px;
+    border-bottom: solid seagreen;
+    color:#65ae87;
+    margin-bottom: 30px;
+}
+
 div.alert ul {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
+}
+.title_panel {
+    border-bottom: solid 1px;
+    margin-bottom: 15px;
+}
+body *.alternative {
+    color:#fff9eb;
+}
+body .button {
+    background-color: #65ae87;
+    color:white;
+}
+
+.title_panel p{
+    padding-left: 8px;
+}
+
+body .panel {
+    padding:25px;
+    border: solid 3px #73b592;
+    background-color:white;
+}
+body .panel p {
+    text-align:center;
+}
+body .panel .hero-invite{
+    max-height: 20px; margin-left:auto; 
+    margin-right:auto; display:block; width:62px; background-color:#b8aa84;
+    border-radius:30px; position: relative; top: -38px; min-height:60px;
 }

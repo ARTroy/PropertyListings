@@ -17,9 +17,12 @@ class RedirectIfNotAdmin
 	 */
 	public function handle($request, Closure $next, $guard = 'admin')
 	{	//!Auth::guard($guard)->check()
-	    if ( !is_object(Auth::user()) || !Auth::user()->admin || !Auth::guard($guard)->check() ) {
-	    	
-	        return redirect('/')->with('custom_errors', ['Log in to gain access to this area']);
+	    if ( Auth::check() && is_object(Auth::user())) {
+	    	if(!Auth::user()->admin){
+	    		 return redirect('/')->withErrors('You need greater permissions to view this area');
+	    	}
+	    } else {
+	    	return redirect('/')->withErrors('You need to be logged in to view this page.');
 	    }
 
 	    return $next($request);

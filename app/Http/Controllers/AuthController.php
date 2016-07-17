@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
-    use ThrottlesLogins;
-    protected $redirectTo = '/';
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    protected $redirectTo = '/profile';
 
 
     public function create(Request $request, User $user)
@@ -49,9 +50,8 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        //dd($validator);
         if ($validator->fails()) {
-            //dd($validator);
+
             return back()
                 ->withInput($request->all())
                 ->withErrors($validator);
@@ -59,12 +59,17 @@ class AuthController extends Controller
             if (Auth::attempt([
                     'email' => $request->input('email'), 
                     'password' => $request->input('password')
-                ])) 
+                ],true)) 
             {
                 // Authentication passed...
-                return redirect()->intended('dashboard');
+                if(Auth::user()->admin){
+                    return redirect(action('UserController@profile'));
+                } else {
+                    return redirect(action('UserController@profile'));
+                }
+                
             } else {
-                return back()->withErrors(['Provided credentials are invalid']);
+                return back()->withErrors('Provided credentials are invalid');
             }
         }
     }

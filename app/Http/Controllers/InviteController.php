@@ -10,10 +10,6 @@ class InviteController extends Controller
         $this->user = $user;
     }*/
 
-	public function claim_create(){
-		return view('public.invite_claim');
-	}
-
 	public function claim_store(Request $request){
 		if( $request->has('email') && $request->has('invite_code') ){
 			$invite = UserInvite::where('code', '=', trim($request->input('invite_code')))
@@ -40,10 +36,10 @@ class InviteController extends Controller
 				//change to user profile when finished
 				return back()->with('info', 'You have claimed the invitation code');
 			} else {
-				return back()->with('custom_errors', ['You need to input the code sent to you via email.']);
+				return back()->withErrors('You need to input the code sent to you via email.');
 			}
 		} else {
-			return back()->with('custom_errors', ['You need to input the code sent to you via email.']);
+			return back()->withErrors('You need to input the code sent to you via email.');
 		}
 	}
 

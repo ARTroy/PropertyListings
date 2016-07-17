@@ -5,14 +5,6 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-
-	public function profileIndex(){
-		$user = Auth::user();
-		$properties = $user->properties,
-		return view('public.property_profile', 
-			['user'=>$user, '$properties'=>$properties]);
-	}
-
 	public function view($id){
 		return view('public.property');
 	}

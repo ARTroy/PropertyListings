@@ -1,4 +1,4 @@
-@if (count($errors) > 0 || session('custom_errors'))
+@if (count($errors) > 0 )
 
     <div class="alert callout" data-closable>
         <ul>
@@ -7,12 +7,12 @@
                 <li>{{ $error }}</li>
             @endforeach
         @endif
-        @if(session('custom_errors'))
+        {{--@if(session('custom_errors'))
             @foreach (session('custom_errors') as $error)
                 <li>{{ $error }}</li>
             @endforeach
         @endif
-        </ul>
+        </ul>--}}
         <button class="close-button" data-close aria-label="Dismiss alert">&times;</button>
     </div>
 @endif

@@ -26,10 +26,10 @@ class User extends Authenticatable
     ];
 
     public function properties(){
-        return $this->hasMany('Property');
+        return $this->hasMany('App\Models\Property');
     }
 
     public function userInvites(){
-        return $this->hasMany('UserInvite');
+        return $this->hasMany('App\Models\UserInvite');
     }
 }
