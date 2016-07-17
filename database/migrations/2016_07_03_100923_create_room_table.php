@@ -18,7 +18,8 @@ class CreateRoomTable extends Migration
             $table->float('size_x')->nullable(); 
             $table->float('size_y')->nullable();
             $table->float('square_foot')->nullable(); 
-            $table->mediumText('map')->nullable(); 
+            $table->mediumText('map')->nullable();
+            $table->string('description');
             $table->timestamps();
         });
     }
