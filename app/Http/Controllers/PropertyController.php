@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\PropertyType;
+use Auth;
 
 class PropertyController extends Controller
 {
@@ -15,8 +17,10 @@ class PropertyController extends Controller
 
 	public function create(){
 		$user = Auth::user();
-		$property_types = PropertyType::all();
-		return view('user.property.create', 
-			['user'=>$user,'property_types'=>$property_types]);
+		$residential = PropertyType::where('use', '=', 'Residential')->get();
+		$commercial = PropertyType::where('use', '=', 'Commercial')->get();
+		return view('user.property.create', ['user'=>$user,
+			'residential'=>$residential, 'commercial'=>$commercial
+		]);
 	}
 }

@@ -52,15 +52,19 @@
                         </div>
                        
                         <div class="medium-6 columns">
+                           
                             @if(Auth::check())
                                 <div style='padding-top:18px; float:right;'>
-                                    <span style="margin-right:10px">You are logged in.</span>
+                                    <a style='font-size:19px; font-weight:bold; margin-right:10px;'
+                                        href='{{action('UserController@profile')}}'>View Profile.
+                                    </a>
                                     <a style="font-size:19px; font-weight:bold;" href="{{action('AuthController@logout')}}">Logout</a>
+                                </div> 
                             @else
                                 <span style='float:right; padding-top:10px'><a class='button' data-open="loginform">Login</a></span>
                             @endif                  
-                        </div>  
-                    </div>
+                             
+                        </div>
                     {{-- <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a> --}}
                 </div>
                 <div class="row">

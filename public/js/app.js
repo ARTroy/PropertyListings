@@ -1,5 +1,35 @@
 $(document).ready(function(){
   $(document).foundation();
+
+  $('#resi').click(function(){
+    var comm_but = $('#comm'); 
+    comm_but.removeClass('selected');
+    $(this).addClass('selected');
+    
+    var comm = $('#comm_select');
+    var resi = $('#resi_select');
+
+    comm.hide();
+    resi.show();
+    
+    comm.find('input:radio').prop( "disabled", true );
+    resi.find('input:radio').prop( "disabled", false );
+  });
+  $('#comm').click(function(){
+    var resi_but = $('#resi'); 
+    resi_but.removeClass('selected');
+    $(this).addClass('selected');
+
+    var resi = $('#resi_select');
+    var comm = $('#comm_select');
+
+    resi.hide();  
+    comm.show();
+    
+    resi.find('input:radio').prop( "disabled", true );
+    comm.find('input:radio').prop( "disabled", false );
+
+  });
 });
 
 /*
