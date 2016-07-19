@@ -101,7 +101,7 @@
 .icon-sofa:before {
   content: "\7a";
 }
-.icon-apartment:before {
+.icon-office:before {
   content: "\41";
 }
 .icon-house-location:before {
@@ -191,9 +191,6 @@
 .icon-decoration:before {
   content: "\36";
 }
-.icon-noun-75594-cc:before {
-  content: "\34";
-}
 .icon-lounge:before {
   content: "\38";
 }
@@ -202,9 +199,6 @@
 }
 .icon-mansion:before {
   content: "\61";
-}
-.icon-office:before {
-  content: "\22";
 }
 .icon-bungalow:before {
   content: "\39";
@@ -232,4 +226,7 @@
 }
 .icon-warehouse:before {
   content: "\37";
+}
+.icon-apartment:before {
+  content: "\34";
 }

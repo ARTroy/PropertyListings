@@ -158,6 +158,9 @@ body .row.divide_row{
     padding-bottom: 10px;
     border-bottom: solid 1px #b8aa84;
 }
+body .row.divide_row .badge.badge_style{
+    background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px; font-family: sans-serif;
+}
 
 body .buttong button.button:last-child:hover,
 body .buttong button.button:last-child:hover, 
@@ -171,6 +174,10 @@ body button.sidebutton:hover {
 body .buttong{
     margin-top:40px;
 }
+body .buttong .button{
+    font-size:18px; width: 100%
+}
+
 body .buttong button.button.selected:last-child,
 body .buttong button.button.selected:first-child {
     background-color:seagreen;
