@@ -1,6 +1,8 @@
 @extends('common.layout')
 
 @section('content')
+<div class="row">
+	<div class="small-12 columns">
 	<form action="{{ action('PropertyController@store') }}" method="POST" data-abide novalidate>
 	{{ csrf_field() }}
 	<div class='row'>
@@ -8,7 +10,7 @@
 			<div class='row divide_row'>
 				<div class="small-4 medium-4 columns">
 					<span class='badge badge_style' style="background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px">1</span>
-					<p  class="alternative">Choose the industry you are selling to</p>
+					<p>Choose the industry you are selling to</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="row collapse buttong">
@@ -26,7 +28,7 @@
 			<div class='row divide_row'>
 				<div  class="small-4 medium-4 columns">
 					<span class="badge badge_style" style="background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px">2</span>
-					<p  class="alternative">Choose the type of property</p>
+					<p>Choose the type of property</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class='row small-up-1 medium-up-3' id='resi_select'>
@@ -35,7 +37,7 @@
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
 									<input type="radio" id='ptype_{{$type->id}}' name="property_type"/>
 									<i class='{{$type->display_class}}' ></i>
-									<p class="alternative">{{$type->type_name}}</p>
+									<p>{{$type->type_name}}</p>
 								</label>
 							</div>
 						@endforeach
@@ -46,7 +48,7 @@
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
 									<input type="radio" id='ptype_{{$type->id}}' name="property_type"/>
 									<i class='{{$type->display_class}}' ></i>
-									<p class="alternative">{{$type->type_name}}</p>
+									<p>{{$type->type_name}}</p>
 								</label>
 							</div>
 						@endforeach
@@ -56,7 +58,7 @@
 			<div class='row divide_row'>
 				<div class='small-4 columns'>
 					<span class="badge badge_style">3</span>
-					<p  class="alternative">Add a title and image</p>
+					<p>Add a title and image</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="row">
@@ -77,4 +79,6 @@
 		</div>
 	</div>	
 	</form>
+	</div>
+</div>
 @endsection

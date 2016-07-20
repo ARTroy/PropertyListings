@@ -41,11 +41,11 @@
             <div class="header">
                 <div class="nav">
                     <div class="row">
-                        <div class="small-6 columns">
+                        <div class="small-12 medium-6 columns">
                             <div class='icon_row'>
                                 <p class='linkheader'><a href='{{action("HomeController@index")}}'>propertylistings.je</a></p>
-                                <i class="fi-clipboard-notes clipheader"></i> 
-                                <i class="fi-arrow-right arrowheader"></i>
+                                {{--<i class="fi-clipboard-notes clipheader hide-for-small-only"></i> 
+                                <i class="fi-arrow-right arrowheader hide-for-small-only"></i>--}}
                                 <i class="icon-hand-house househeader"></i> 
                             </div>
                             
@@ -54,14 +54,16 @@
                         <div class="medium-6 columns">
                            
                             @if(Auth::check())
-                                <div style='padding-top:18px; float:right;'>
-                                    <a style='font-size:19px; font-weight:bold; margin-right:10px;'
-                                        href='{{action('UserController@profile')}}'>View Profile.
+                                <div class='dynamic_float'>
+                                    <a style='font-size:19px; font-weight:bold; margin-right:20px;'
+                                        href='{{action('UserController@profile')}}'>View Profile
                                     </a>
                                     <a style="font-size:19px; font-weight:bold;" href="{{action('AuthController@logout')}}">Logout</a>
                                 </div> 
                             @else
-                                <span style='float:right; padding-top:10px'><a class='button' data-open="loginform">Login</a></span>
+                                <div class='dynamic_float'>
+                                    <a style="font-size:19px; font-weight:bold;" data-open="loginform">Login</a>
+                                </div>
                             @endif                  
                              
                         </div>
@@ -73,21 +75,12 @@
                     </div>
                 </div>
             </div>
+        </div> 
         @endif
 
-    	<div class="row">
-            @hasSection('sidebar')
-                <div class="small-3 columns primary_container">
-                    @yield('sidebar')
-                </div>
-                <div class="small-9 columns primary_container">
-                    @yield('content')
-                </div>
-            @else
-        		<div class="small-12 columns primary_container">
-        			@yield('content')
-        		</div>
-            @endif
-    	</div>
+
+		<div class="primary_container">
+			@yield('content')
+		</div>
     </body>
 </html>

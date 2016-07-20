@@ -1,6 +1,8 @@
 @extends('common.layout')
 
 @section('content')
+<div class="row">
+	<div class="small-12 columns">
 	<p class="alternative">Profile page of {{$user->email}}.</p>
 	<br>
 
@@ -50,5 +52,6 @@
 			</table>
 		</div>
 	</div>
-
+	</div>
+</div>
 @endsection

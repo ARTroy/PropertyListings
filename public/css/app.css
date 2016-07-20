@@ -29,8 +29,14 @@ body.over {
 }
 
 body.over *{
-    color:#b8aa84;
     font-family:railway;
+}
+
+body.over .primary_container * {
+    color:#fff9eb;
+} 
+body.over .primary_container i{
+    color: #b8aa84;
 }
 
 body h1, body h2, body h3,body h4, body h5 {
@@ -83,13 +89,16 @@ i.clipheader:before
     position: relative;
 }
 
-.nav {
+body .header .nav {
     background-color: #fffaf5;
     min-height: 40px;
-    border-bottom: solid seagreen;
+    border-bottom: solid #65ae87;
     /*box-shadow: 0px 1px 3px 2px seagreen;*/
-    color:#65ae87;
+    
     margin-bottom: 30px;
+}
+body .header .nav *{
+    color:#b8aa84;
 }
 
 div.alert ul {
@@ -99,21 +108,22 @@ div.alert ul {
     border-bottom: solid 1px;
     margin-bottom: 15px;
 }
-body *.alternative {
-    color:#fff9eb;
+body.over .primary_container *.alternative {
+    color:#b8aa84;
+    font-weight: bold;
 }
 
-.title_panel p{
+.primary_container .title_panel p{
     padding-left: 8px;
 }
 
-body .panel {
+body .primary_container .panel {
     padding:25px;
     border: solid 3px #73b592;
     background-color:white;
     margin-bottom: 20px;
 }
-body .panel *{
+body.over .primary_container .panel *{
     color:#2b2826;
     /* #918155;*/
 }
@@ -212,10 +222,18 @@ body label.property_type_lable > input:checked ~ i{ /* (RADIO CHECKED) IMAGE STY
 body label.property_type_lable > input:checked ~ p{ /* (RADIO CHECKED) IMAGE STYLES */
   color:white;
 }
-
+body.over .dynamic_float {
+    padding-top:18px;
+    float: right;
+}
 @media only screen and (max-width: 40em) {
     body .panel .propcreate {
         margin: 8px;
         max-height:121px;
+    }
+    body.over .dynamic_float {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        float:none;
     }
 }

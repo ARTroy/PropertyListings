@@ -3,7 +3,6 @@
 @section('content')
 	<div class="row">
 		<div class="small-6 columns">
-
 		</div>
 		<div class="small-12 medium-6 columns">
 			<div class="panel" >
