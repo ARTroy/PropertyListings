@@ -35,7 +35,7 @@
 						@foreach($residential as $type)
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" id='ptype_{{$type->id}}' name="property_type"/>
+									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type"/>
 									<i class='{{$type->display_class}}' ></i>
 									<p>{{$type->type_name}}</p>
 								</label>
@@ -46,7 +46,7 @@
 						@foreach($commercial as $type)
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" id='ptype_{{$type->id}}' name="property_type"/>
+									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type"/>
 									<i class='{{$type->display_class}}' ></i>
 									<p>{{$type->type_name}}</p>
 								</label>
@@ -58,22 +58,57 @@
 			<div class='row divide_row'>
 				<div class='small-4 columns'>
 					<span class="badge badge_style">3</span>
-					<p>Add a title and image</p>
+					<p>Add a public title and image</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="row">
 						<div class="small-12 medium-6 columns">
-							<label>Title <input type="text" name="title"></label>
+							<label>Title <input type="text" name="title" required></label>
 						</div>
 						<div class="small-12 medium-6 columns">
 							<label>Image 
 								<button class="file-upload small-12">            
-									<input type="file" class="file-input">
+									<input type="file" class="file-input" name="image">
 								</button>
 							</label>
 						</div>
 					</div>
-					
+				</div>
+			</div>
+			<div class='row divide_row'>
+				<div class='small-4 columns'>
+					<span class="badge badge_style">4</span>
+					<p>Add an address, you chose to hide it, if you are concerned for your privacy</p>
+				</div>
+				<div class="small-8 medium-8 columns">
+					<div class="row">
+						<div class="small-12 medium-6 columns">
+							<label>Line 1<input type="text" name="line1" required></label>
+						</div>
+						<div class="small-12 medium-6 columns">
+							<label>Line 2<input type="text" name="line2"></label>
+						</div>
+						<div class="small-12 medium-6 columns">
+							<label>Line 3<input type="text" name="line3"></label>
+						</div>
+						<div class="small-12 medium-6 columns">
+							<label>Postcode<input type="text" name="postcode" required></label>
+						</div>
+						<div class="small-12 medium-6 columns">
+							<label><input type="checkbox" name="display" checked> Display publicly</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row divide_row'>
+				<div class='small-4 columns'>
+					<span class="badge badge_style">5</span>
+					<p>After filling in the above, progress on to adding rooms to your property</p>
+				</div>
+				<div class="small-8 medium-8 columns">
+					<input type="submit" class="button float-center" 
+						style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
+						value="Got it, im ready to move on" name="" />
 				</div>
 			</div>
 		</div>

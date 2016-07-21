@@ -117,6 +117,9 @@ body.over .primary_container *.alternative {
     padding-left: 8px;
 }
 
+body.over .primary_container input[type=text]{
+    color:teal;
+}
 body .primary_container .panel {
     padding:25px;
     border: solid 3px #73b592;

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddImageFieldsToPropertyImageTable extends Migration {
+class AddImageFieldsToPropertyTable extends Migration {
 
     /**
      * Make changes to the table.
@@ -12,7 +12,7 @@ class AddImageFieldsToPropertyImageTable extends Migration {
      */
     public function up()
     {
-        Schema::table('property_image', function(Blueprint $table) {
+        Schema::table('property', function(Blueprint $table) {
 
             $table->string('image_file_name')->nullable();
             $table->integer('image_file_size')->nullable()->after('image_file_name');
@@ -30,7 +30,7 @@ class AddImageFieldsToPropertyImageTable extends Migration {
      */
     public function down()
     {
-        Schema::table('property_image', function(Blueprint $table) {
+        Schema::table('property', function(Blueprint $table) {
 
             $table->dropColumn('image_file_name');
             $table->dropColumn('image_file_size');
