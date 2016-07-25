@@ -12,8 +12,13 @@ $(document).ready(function(){
     comm.hide();
     resi.show();
     
+    comm.find('input').each(function(){ 
+      $(this).prop('checked', false); } );
+
     comm.find('input:radio').prop( "disabled", true );
     resi.find('input:radio').prop( "disabled", false );
+
+    //    comm.find('input:radio').removeProp('checked');
   });
   $('#comm').click(function(){
     var resi_but = $('#resi'); 
@@ -26,9 +31,11 @@ $(document).ready(function(){
     resi.hide();  
     comm.show();
     
+    resi.find('input').each(function(){ 
+      $(this).prop('checked', false); });
+
     resi.find('input:radio').prop( "disabled", true );
     comm.find('input:radio').prop( "disabled", false );
-
   });
 });
 

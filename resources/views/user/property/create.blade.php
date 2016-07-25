@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="small-12 columns">
-	<form action="{{ action('PropertyController@store') }}" method="POST" data-abide novalidate>
+	<form action="{{ action('PropertyController@store') }}" method="post" data-abide novalidate enctype="multipart/form-data">
 	{{ csrf_field() }}
 	<div class='row'>
 		<div class="small-12 columns">
@@ -78,7 +78,7 @@
 			<div class='row divide_row'>
 				<div class='small-4 columns'>
 					<span class="badge badge_style">4</span>
-					<p>Add an address, you chose to hide it, if you are concerned for your privacy</p>
+					<p>Add an address, you can chose to hide it if you are concerned for your privacy</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="row">
@@ -108,7 +108,7 @@
 				<div class="small-8 medium-8 columns">
 					<input type="submit" class="button float-center" 
 						style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
-						value="Got it, im ready to move on" name="" />
+						value="Im ready to move on" name="" />
 				</div>
 			</div>
 		</div>

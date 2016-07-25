@@ -100,6 +100,9 @@ body .header .nav {
 body .header .nav *{
     color:#b8aa84;
 }
+body .header .nav .alert.callout *{
+    color:indianred;
+}
 
 div.alert ul {
     margin-bottom: 0px;
@@ -162,7 +165,7 @@ body .buttong button.button:first-child
     background-color: #65ae87;
 }
 
-body .button:hover{
+body .button:hover,body .button:focus,body .button:active,body *[tabindex] {
     background-color: seagreen;
 }
 
