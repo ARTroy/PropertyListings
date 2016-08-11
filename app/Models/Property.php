@@ -11,4 +11,8 @@ class Property extends Model
     public function addresses(){
         return $this->hasMany('App\Models\Address');
     }
+
+    public function property_type(){
+    	return $this->hasOne('App\Models\PropertyType');
+    }
 }

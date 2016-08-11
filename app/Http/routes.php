@@ -29,6 +29,7 @@ Route::post('/password/reset', ['as' => 'auth.password.reset', 'uses' => 'Passwo
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', 'UserController@profile');
     Route::get('/properties/create', 'PropertyController@create');
+    Route::get('/properties/create/rooms', 'PropertyController@create_rooms');
     Route::get('/properties/{id}/edit', 'PropertyController@edit');
     Route::post('/properties/store', 'PropertyController@store');
     Route::post('/properties/store/rooms', 'PropertyController@rooms');

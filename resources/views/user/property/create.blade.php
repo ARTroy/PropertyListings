@@ -5,6 +5,7 @@
 	<div class="small-12 columns">
 	<form action="{{ action('PropertyController@store') }}" method="post" data-abide novalidate enctype="multipart/form-data">
 	{{ csrf_field() }}
+	{{--<input type="hidden" value="{{ $invite_code }}" />--}}
 	<div class='row'>
 		<div class="small-12 columns">
 			<div class='row divide_row'>
@@ -35,9 +36,9 @@
 						@foreach($residential as $type)
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type"/>
+									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type" required/>
 									<i class='{{$type->display_class}}' ></i>
-									<p>{{$type->type_name}}</p>
+									{{$type->type_name}}
 								</label>
 							</div>
 						@endforeach
@@ -63,12 +64,12 @@
 				<div class="small-8 medium-8 columns">
 					<div class="row">
 						<div class="small-12 medium-6 columns">
-							<label>Title <input type="text" name="title" required></label>
+							<label>Title <input type="text" name="title" value="{{ old('title') }}" required></label>
 						</div>
 						<div class="small-12 medium-6 columns">
 							<label>Image 
 								<button class="file-upload small-12">            
-									<input type="file" class="file-input" name="image">
+									<input type="file" class="file-input" name="image" required>
 								</button>
 							</label>
 						</div>
@@ -83,24 +84,24 @@
 				<div class="small-8 medium-8 columns">
 					<div class="row">
 						<div class="small-12 medium-6 columns">
-							<label>Line 1<input type="text" name="line1" required></label>
+							<label>Line 1<input type="text" name="line1" value="{{ old('line1') }}" required></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label>Line 2<input type="text" name="line2"></label>
+							<label>Line 2<input type="text" name="line2" value="{{ old('line2') }}" ></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label>Line 3<input type="text" name="line3"></label>
+							<label>Line 3<input type="text" name="line3" value="{{ old('line3') }}"></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label>Postcode<input type="text" name="postcode" required></label>
+							<label>Postcode<input type="text" name="postcode" value="{{ old('postcode') }}" required></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label><input type="checkbox" name="display" checked> Display publicly</label>
+							<label><input type="checkbox" name="display" value="{{ old('display') }}" checked> Display publicly</label>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class='row divide_row'>
+			<div class='row divide_row' style="margin-bottom:0px">
 				<div class='small-4 columns'>
 					<span class="badge badge_style">5</span>
 					<p>After filling in the above, progress on to adding rooms to your property</p>
@@ -108,7 +109,7 @@
 				<div class="small-8 medium-8 columns">
 					<input type="submit" class="button float-center" 
 						style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
-						value="Im ready to move on" name="" />
+						value="Save and add rooms" name="" />
 				</div>
 			</div>
 		</div>

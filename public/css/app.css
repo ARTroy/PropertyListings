@@ -39,6 +39,16 @@ body.over .primary_container i{
     color: #b8aa84;
 }
 
+body.over .primary_container .form-error, body.over .primary_container .is-invalid-label {
+    color: lightcoral;
+}
+
+body.over .is-invalid-input:not(:focus) {
+    border-color: lightcoral;
+    border-width:2px;
+    background-color:white;
+}
+
 body h1, body h2, body h3,body h4, body h5 {
 	font-family:railway-bold;
 }
@@ -123,6 +133,11 @@ body.over .primary_container *.alternative {
 body.over .primary_container input[type=text]{
     color:teal;
 }
+body.over .primary_container input[type=checkbox]{
+    zoom: 2;
+    vertical-align: top;
+}
+
 body .primary_container .panel {
     padding:25px;
     border: solid 3px #73b592;
@@ -140,7 +155,7 @@ body .panel .hero-invite{
 }
 
 body .panel .sidebutton {
-    background-color: #73b592; height: 145px; width:100%;
+    background-color: #73b592; height: 150px; width:100%;
     line-height: initial;
     margin-bottom: -6px;
     position: relative;
@@ -165,7 +180,7 @@ body .buttong button.button:first-child
     background-color: #65ae87;
 }
 
-body .button:hover,body .button:focus,body .button:active,body *[tabindex] {
+body .button:hover,body .button:focus,body .button:active {
     background-color: seagreen;
 }
 
@@ -200,11 +215,15 @@ body .buttong button.button.selected:first-child {
 } 
 
 body .panel .propcreate {
-    margin:12px; max-height:116px;
+    margin:10px; max-height:125px;
 }
 body button.button {
     background-color: #65ae87;
     color:white;
+}
+
+body.over .primary_container table *  {
+   color:#2b2826
 }
 
 
@@ -235,8 +254,12 @@ body.over .dynamic_float {
 @media only screen and (max-width: 40em) {
     body .panel .propcreate {
         margin: 8px;
-        max-height:121px;
+        max-height:150px;
     }
+    body .panel .sidebutton {
+        height:163px;
+    }
+    
     body.over .dynamic_float {
         padding-top: 5px;
         padding-bottom: 10px;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\PropertyType;
+use App\Models\Address;
 use Validator;
 use Image;
 use Auth;
@@ -20,18 +21,33 @@ class PropertyController extends Controller
 
 	public function create(){
 		$user = Auth::user();
+		$properties = $user->properties->count();
+		$invite_codes = $user->userInvites()->whereNotNull('claimed_at')->count();
 
+		if($invite_codes *2 <= $properties){
+			return back()->withErrors('Your account does not have any outstanding invitation codes.');
+		}
+		//'invite_code'=>$invite_code,
 		$residential = PropertyType::where('use', '=', 'Residential')->get();
 		$commercial = PropertyType::where('use', '=', 'Commercial')->get();
-		return view('user.property.create', ['user'=>$user,
+		return view('user.property.create', ['user'=>$user, 
 			'residential'=>$residential, 'commercial'=>$commercial
+		]);
+	}
+
+	public function create_rooms($property_id){
+		$user = Auth::user();
+		$property = Property::findOrFail($property_id);
+
+		return view('user.property.create_room',[
+			'user'=>$user, 'property'=>$property,
 		]);
 	}
 
 	public function store(Request $request, Property $property, Address $address){
         $validator = Validator::make( $request->all(), [
             'title' => 'required|min:4|alpha_dash',
-            'property_type' => 'required|min:4',
+            'property_type' => 'required',
             'line1' => 'required',
             'postcode' => 'required|min:6|alpha_dash',
             'image' => 'required|image',
@@ -55,7 +71,7 @@ class PropertyController extends Controller
 		    	$img->save(public_path('images'). '/'. $image_name);
 	    	}
 	    	catch(Exception $e) {
-	    		return back()->withErrors('Image upload failed.');;
+	    		return back()->withErrors('Image upload failed.');
 	    	}
 	    	$property->image_file_name =  $image_name;
 	    	$property->image_content_type = $img->mime();
@@ -70,6 +86,7 @@ class PropertyController extends Controller
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();
+	    	return redirect(action('PropertyController@create_rooms', [$property->id]));
         }	
 	}
 }
