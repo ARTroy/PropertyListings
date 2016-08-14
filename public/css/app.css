@@ -23,31 +23,53 @@
     display: inline-table;
 }
 
-body.over {
+body .over, body .white  {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: table;
+}
+
+body .over {
     /*background-color:#2b2826;*/
     background-color:teal;
 }
 
-body.over *{
+body .over  *, body .white *{
     font-family:railway;
 }
 
-body.over .primary_container * {
+body .over  .primary_container * {
     color:#fff9eb;
 } 
-body.over .primary_container i{
+body .over  .primary_container i{
     color: #b8aa84;
 }
 
-body.over .primary_container .form-error, body.over .primary_container .is-invalid-label {
+body .primary_container .form-error, body .over  .primary_container .is-invalid-label {
     color: lightcoral;
 }
 
-body.over .is-invalid-input:not(:focus) {
+body .is-invalid-input:not(:focus) {
     border-color: lightcoral;
     border-width:2px;
     background-color:white;
 }
+body .is-invalid-input {
+    background-color:white;
+}
+body input[type=file]{
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+    padding: 5px;
+   
+}
+
+body .over .primary_container  input[type=file]{
+    color:#2b2826;
+}
+
 
 body h1, body h2, body h3,body h4, body h5 {
 	font-family:railway-bold;
@@ -121,7 +143,7 @@ div.alert ul {
     border-bottom: solid 1px;
     margin-bottom: 15px;
 }
-body.over .primary_container *.alternative {
+body .over  .primary_container *.alternative {
     color:#b8aa84;
     font-weight: bold;
 }
@@ -130,10 +152,10 @@ body.over .primary_container *.alternative {
     padding-left: 8px;
 }
 
-body.over .primary_container input[type=text]{
+body .over  .primary_container input[type=text]{
     color:teal;
 }
-body.over .primary_container input[type=checkbox]{
+body .over  .primary_container input[type=checkbox]{
     zoom: 2;
     vertical-align: top;
 }
@@ -142,18 +164,29 @@ body .primary_container .panel {
     padding:25px;
     border: solid 3px #73b592;
     background-color:white;
-    margin-bottom: 20px;
 }
-body.over .primary_container .panel *{
+body .primary_container .panel i,body .primary_container .panel * {
     color:#2b2826;
     /* #918155;*/
 }
 
 body .panel .hero-invite{
-    max-height: 20px; width:62px; background-color:#b8aa84;
-    border-radius:30px; position: relative; top: -38px; min-height:60px;
+    max-height: 20px; 
+    width:62px; 
+    background-color:#b8aa84;
+    border-radius:30px; 
+    position: relative; 
+    top: -38px; 
+    min-height:60px;
 }
 
+body .white table {
+    border: #eeeeee 2px solid;
+}
+
+body .panel .status_pro {
+    height:124px;
+}
 body .panel .sidebutton {
     background-color: #73b592; height: 150px; width:100%;
     line-height: initial;
@@ -165,6 +198,7 @@ body .panel .sidebutton {
 body .panel .sidebutton a {
     display: block;
     height: 100%;
+    text-align: center;
 }
 body .panel .sidebutton a i {
     font-size:45px;
@@ -199,7 +233,7 @@ body .buttong button.button:last-child:hover,
      background-color: #65ae87;
 }
 
-body button.sidebutton:hover {
+body .sidebutton:hover {
     background-color:seagreen;
 } 
 body .buttong{
@@ -222,7 +256,7 @@ body button.button {
     color:white;
 }
 
-body.over .primary_container table *  {
+body .over .primary_container table *  {
    color:#2b2826
 }
 
@@ -247,22 +281,25 @@ body label.property_type_lable > input:checked ~ i{ /* (RADIO CHECKED) IMAGE STY
 body label.property_type_lable > input:checked ~ p{ /* (RADIO CHECKED) IMAGE STYLES */
   color:white;
 }
-body.over .dynamic_float {
+body .dynamic_float {
     padding-top:18px;
     float: right;
 }
 @media only screen and (max-width: 40em) {
     body .panel .propcreate {
         margin: 8px;
-        max-height:150px;
+        max-height:160px;
     }
     body .panel .sidebutton {
         height:163px;
     }
     
-    body.over .dynamic_float {
+    body .over  .dynamic_float {
         padding-top: 5px;
         padding-bottom: 10px;
         float:none;
+    }
+    body .panel .status_pro {
+        height:160px;
     }
 }

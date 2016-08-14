@@ -18,7 +18,7 @@
 					@endforeach
 				</div>
 				<div>
-					<input type="submit" class="button" name="">
+					<input type="submit" value="Save" class="button" name="">
 				</div>
 			</div>
 		</div>

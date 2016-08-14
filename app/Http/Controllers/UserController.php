@@ -36,5 +36,4 @@ class UserController extends Controller
 			'invites'=>$invites
 		]);
 	}
-	
 }

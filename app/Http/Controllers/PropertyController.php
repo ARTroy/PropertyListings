@@ -15,10 +15,6 @@ class PropertyController extends Controller
 		return view('public.property');
 	}
 
-	public function edit($id){
-		return view('user.property.edit');
-	}
-
 	public function create(){
 		$user = Auth::user();
 		$properties = $user->properties->count();
@@ -32,6 +28,14 @@ class PropertyController extends Controller
 		$commercial = PropertyType::where('use', '=', 'Commercial')->get();
 		return view('user.property.create', ['user'=>$user, 
 			'residential'=>$residential, 'commercial'=>$commercial
+		]);
+	}
+
+	public function edit($property_id){
+		$user = Auth::user();
+		$property = Property::findOrFail($property_id);
+		return view('user.property.edit',[
+			'user'=>$user, 'property'=>$property,
 		]);
 	}
 
@@ -49,8 +53,8 @@ class PropertyController extends Controller
             'title' => 'required|min:4|alpha_dash',
             'property_type' => 'required',
             'line1' => 'required',
-            'postcode' => 'required|min:6|alpha_dash',
-            'image' => 'required|image',
+            'postcode' => 'required|min:5|alpha_dash',
+            'image' => 'required|mimes:jpeg,jpg,png,gif',
             'property_type' =>'required|exists:property_type,id',
         ]);
         
@@ -73,16 +77,17 @@ class PropertyController extends Controller
 	    	catch(Exception $e) {
 	    		return back()->withErrors('Image upload failed.');
 	    	}
+	    	$property->user_id = Auth::user()->id;
 	    	$property->image_file_name =  $image_name;
 	    	$property->image_content_type = $img->mime();
 	    	$property->image_file_size = $img->filesize();
 	    	$property->title = $request->input('title');
-	    	$property->property_type = $request->input('property_type');
+	    	$property->property_type_id = $request->input('property_type');
 	    	$property->save();
 
-	    	$address->line1 = $request->input('line1');
-	    	$address->line2 = $request->input('line2');
-	    	$address->line3 = $request->input('line3');
+	    	$address->line_1 = $request->input('line1');
+	    	$address->line_2 = $request->input('line2');
+	    	$address->line_3 = $request->input('line3');
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();

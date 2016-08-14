@@ -11,7 +11,8 @@
 			<div class='row divide_row'>
 				<div class="small-4 medium-4 columns">
 					<span class='badge badge_style' style="background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px">1</span>
-					<p>Choose the industry you are selling to</p>
+					<p>Choose the industry you are selling to<br>This cannot be revised once saved</p>
+
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="row collapse buttong">
@@ -29,7 +30,7 @@
 			<div class='row divide_row'>
 				<div  class="small-4 medium-4 columns">
 					<span class="badge badge_style" style="background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px">2</span>
-					<p>Choose the type of property</p>
+					<p>Choose the type of property<br>This cannot be revised once saved</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class='row small-up-1 medium-up-3' id='resi_select'>
@@ -69,7 +70,7 @@
 						<div class="small-12 medium-6 columns">
 							<label>Image 
 								<button class="file-upload small-12">            
-									<input type="file" class="file-input" name="image" required>
+									<input style='border-style: solid;' type="file" class="file-input" name="image" required>
 								</button>
 							</label>
 						</div>
@@ -93,8 +94,11 @@
 							<label>Line 3<input type="text" name="line3" value="{{ old('line3') }}"></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label>Postcode<input type="text" name="postcode" value="{{ old('postcode') }}" required></label>
+							<label>Postcode<input type="text" name="postcode" value="{{ old('postcode') }}" 
+							pattern="^[a-zA-Z0-9]{2,5}( )?[a-zA-Z0-9]{2,3}$" required></label>
 						</div>
+
+						{{--  --}}
 						<div class="small-12 medium-6 columns">
 							<label><input type="checkbox" name="display" value="{{ old('display') }}" checked> Display publicly</label>
 						</div>
@@ -107,14 +111,23 @@
 					<p>After filling in the above, progress on to adding rooms to your property</p>
 				</div>
 				<div class="small-8 medium-8 columns">
-					<input type="submit" class="button float-center" 
-						style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
-						value="Save and add rooms" name="" />
+					<div class="small-12 medium-6 columns">
+						<label style="margin-top:15px">Asking price (£)
+						<input type="text" name="asking_value" value="{{ old('asking_value') }}" required></label>
+					</div>
+					<div class="small-12 medium-6 columns">
+						<input type="submit" class="button" {{--  float-center --}}
+							style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
+							value="Save and add rooms" name="" />
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>	
 	</form>
 	</div>
+
 </div>
+
 @endsection
