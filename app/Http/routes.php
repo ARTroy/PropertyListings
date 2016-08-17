@@ -32,14 +32,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/properties/{id}/create/rooms', 'PropertyController@create_rooms');
     Route::get('/properties/{id}/edit', 'PropertyController@edit');
     Route::post('/properties/store', 'PropertyController@store');
+    Route::post('/properties/{id}/update', 'PropertyController@update');
     Route::post('/properties/store/rooms', 'PropertyController@rooms');
 });
 
-//Admin
+/*Admin
 Route::group(['middleware' => ['admin']],  function(){
 	Route::get('admin/properties', 'UserController@profileAdmin');
 	Route::get('admin/properties/{id}/edit', 'PropertyController@edit');
 	Route::post('admin/properties/store', 'PropertyController@updateStoreAny');
 	Route::get('admin/invites', 'InviteController@index_create');
 	Route::post('admin/user/create', 'AuthController@create');
-});
+});*/

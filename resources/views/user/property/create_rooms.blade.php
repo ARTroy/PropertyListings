@@ -1,8 +1,13 @@
 @extends('common.layout')
 
 @section('content')
-<form action="{{ action('PropertyController@store') }}" method="post" data-abide novalidate enctype="multipart/form-data">
-	<div class="row">
+<div class="row">
+		<div class="small-12 columns">
+			<table>
+				<thead><th>Description</th><th>size_x</th><th>size_y</th><th>Edit</th></thead>	
+			</table>
+		</div>
+		<form action="{{ action('PropertyController@create_room') }}" method="post" data-abide novalidate enctype="multipart/form-data">
 		<div class="small-12 columns">
 			{{ csrf_field() }}
 			<div class="small-12 medium-12 columns">
@@ -17,8 +22,21 @@
 						</div>
 					@endforeach
 				</div>
-				<div>
-					<input type="submit" value="Save" class="button" name="">
+				<div class="small-12 medium-6 columns">
+					<label>Description<input type="text" name="description"  value="{{ old('description') }}"></label>	
+				</div>	
+				<div class="small-12 medium-6 columns">
+					<label>Image 
+						<button class="file-upload small-12">            
+							<input style='border-style: solid;' type="file" class="file-input" name="image" required  value="{{ old('image') }}">
+						</button>
+					</label>
+				</div>
+				<div class="small-12 medium-6 columns">
+					<label>Width in foot<input type="text" name="size_x"  value="{{ old('size_x') }}"></label>
+				</div>
+				<div class="small-12 medium-6 columns">
+					<label>Length in foot<input type="text" name="size_y"  value="{{ old('size_y') }}"></label>
 				</div>
 			</div>
 		</div>

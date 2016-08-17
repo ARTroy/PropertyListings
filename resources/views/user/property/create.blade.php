@@ -97,23 +97,21 @@
 							<label>Postcode<input type="text" name="postcode" value="{{ old('postcode') }}" 
 							pattern="^[a-zA-Z0-9]{2,5}( )?[a-zA-Z0-9]{2,3}$" required></label>
 						</div>
-
-						{{--  --}}
 						<div class="small-12 medium-6 columns">
 							<label><input type="checkbox" name="display" value="{{ old('display') }}" checked> Display publicly</label>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class='row divide_row' style="margin-bottom:0px">
+			<div class='row divide_row' style="margin-bottom:0px; border-bottom:none;">
 				<div class='small-4 columns'>
 					<span class="badge badge_style">5</span>
-					<p>After filling in the above, progress on to adding rooms to your property</p>
+					<p>Add your asking price,then save and progress</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="small-12 medium-6 columns">
 						<label style="margin-top:15px">Asking price (£)
-						<input type="text" name="asking_value" value="{{ old('asking_value') }}" required></label>
+						<input type="text" name="asking_value" value="{{ old('asking_value') }}" required pattern='number'></label>
 					</div>
 					<div class="small-12 medium-6 columns">
 						<input type="submit" class="button" {{--  float-center --}}

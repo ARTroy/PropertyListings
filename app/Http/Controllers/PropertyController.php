@@ -43,9 +43,45 @@ class PropertyController extends Controller
 		$user = Auth::user();
 		$property = Property::findOrFail($property_id);
 
-		return view('user.property.create_room',[
+		return view('user.property.create_rooms',[
 			'user'=>$user, 'property'=>$property,
 		]);
+	}
+
+	public function update(Request $request, $property_id){
+		$validator = Validator::make( $request->all(), [
+            'title' => 'required|min:4|alpha_dash',
+            'line1' => 'required',
+            'postcode' => 'required|min:5|alpha_dash',
+            'image' => 'required|mimes:jpeg,jpg,png,gif',
+            'asking_price' => 'required',
+        ]);
+		$property = Property::findOrFail($property_id);
+		if($validator->fails()){
+        	return back()->withErrors($validator)->withInput();
+        } else {
+			if($request->has('image')){ 
+				try 
+		    	{	
+		    		$image =  $request->file('image');
+		    		$image_name =  $image->getClientOriginalName();
+		    		$imageRealPath =  $image->getRealPath();
+		    		$extension =  $image->getClientOriginalExtension();
+
+			    	$img = Image::make($imageRealPath); // use this if you want facade style code
+			    	$img->resize(intval(400), null, function($constraint) {
+			    		 $constraint->aspectRatio();
+			    	});
+			    	$img->save(public_path('images'). '/'. $image_name);
+			    	$property->image_file_name =  $image_name;
+			    	$property->image_content_type = $img->mime();
+			    	$property->image_file_size = $img->filesize();
+		    	}
+		    	catch(Exception $e) {
+		    		return back()->withErrors('Image upload failed.');
+		    	}
+	    	}
+	    }
 	}
 
 	public function store(Request $request, Property $property, Address $address){
@@ -54,8 +90,9 @@ class PropertyController extends Controller
             'property_type' => 'required',
             'line1' => 'required',
             'postcode' => 'required|min:5|alpha_dash',
-            'image' => 'required|mimes:jpeg,jpg,png,gif',
+            'image' => 'mimes:jpeg,jpg,png,gif',
             'property_type' =>'required|exists:property_type,id',
+            'asking_price' => 'required',
         ]);
         
         if($validator->fails()){
@@ -81,7 +118,8 @@ class PropertyController extends Controller
 	    	$property->image_file_name =  $image_name;
 	    	$property->image_content_type = $img->mime();
 	    	$property->image_file_size = $img->filesize();
-	    	$property->title = $request->input('title');
+	    	$property->asking_price = $request->input('title');
+	    	$property->title = $request->input('asking_price');
 	    	$property->property_type_id = $request->input('property_type');
 	    	$property->save();
 
