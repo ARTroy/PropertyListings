@@ -65,16 +65,18 @@
 			</div>
 			<table>
 				<thead> 
-					<th>Email</th>
 					<th>Code</th>
-					<th>Claimed On</th>
+					<th>Claimed At</th>
+					<th>Properties</th>
 				</thead>
 				<tbody>
 				@foreach($invites as $invite)
-					<tr style="min-height:50px; background-color:#eeeeee;">
-						<td style="font-family:monospace">{{$invite->email}}</td>
-						<td style="font-family:monospace">{{$invite->code}}</td>
-						<td style="font-family:monospace">{{$invite->claimed_at}}</td>
+					<tr style="min-height:50px; background-color:#eeeeee;" >
+						{{--<td style="font-family:monospace; padding: 12px;">{{$invite->email}}</td>--}}
+
+						<td style="font-family:monospace; padding: 12px;">{{$invite->code}}</td>
+						<td style="font-family:monospace; padding: 12px;">{{$invite->claimed_at}}</td>
+						<td style="font-family:monospace; padding: 12px;">2</td>
 					</tr>
 				@endforeach
 				</tbody>

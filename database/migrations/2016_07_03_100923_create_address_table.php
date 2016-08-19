@@ -16,12 +16,12 @@ class CreateAddressTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable();
             $table->integer('property_id')->nullable();
-            $table->integer('line_1');
-			$table->integer('line_2')->nullable();
-			$table->integer('line_3')->nullable();
-			$table->integer('county')->nullable();
-            $table->integer('postcode');
-            $table->integer('country');
+            $table->string('line_1');
+			$table->string('line_2')->nullable();
+			$table->string('line_3')->nullable();
+			$table->string('county')->nullable();
+            $table->string('postcode');
+            $table->string('country')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::drop('property');
+        Schema::drop('address');
     }
 }

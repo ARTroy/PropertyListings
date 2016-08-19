@@ -23,7 +23,8 @@
 						</label>
 						</div>
 						<div class="small-4 columns">
-							<img  style='max-width:100px; max-height:100px;' src="/images/{{$property->image_file_name}}">
+							<img  style='max-width:120px; max-height:120px; float:right' src="/images/{{$property->image_file_name}}">
+
 						</div>
 					</div>
 
@@ -32,23 +33,32 @@
 						<h4>Address</h4>
 					</div>
 					<div class="small-12 medium-6 columns">
-						<label>Line 1<input type="text" name="line1" value="{{ $property->line1 }}" required></label>
+						<label>Line 1<input type="text" name="line1" value="{{ $address->line_1 }}" required></label>
 					</div>
 					<div class="small-12 medium-6 columns">
-						<label>Line 2<input type="text" name="line2" value="{{ $property->line2 }}" ></label>
+						<label>Line 2<input type="text" name="line2" value="{{ $address->line_2 }}" ></label>
 					</div>
 					<div class="small-12 medium-6 columns">
-						<label>Line 3<input type="text" name="line3" value="{{ $property->line3 }}"></label>
+						<label>Line 3<input type="text" name="line3" value="{{ $address->line_3 }}"></label>
 					</div>
 					<div class="small-12 medium-6 columns">
-						<label>Postcode<input type="text" name="postcode" value="{{ $property->postcode }}" required></label>
+						<label>Postcode<input type="text" name="postcode" value="{{ $address->postcode }}" required></label>
 					</div>
-					<div class="small-12 medium-6 columns">
-						<label><input type="checkbox" name="display" value="{{ $property->display }}" checked> Display publicly</label>
+					<div class="small-12 medium-12 columns" style="margin-bottom:10px;">
+						<label><input type="checkbox" name="display" value="{{ $address->display }}" 
+						@if($property->display) checked @endif> Display publicly</label>
 					</div>
+
 					<div class="small-12 medium-12 columns">
-						<input type="submit" class="button small-4 float-center" 
-						value="Save" name="" style="color:white" />
+						<div class='row'>
+						<div class="small-6 medium-6 columns">
+							<input type="submit" class="button small-12" 
+							value="Save" name="" style="color:white" />
+						</div>
+						<div class="small-6 medium-6 columns">
+							<a style="color:white" class='button small-12' href="{{action('PropertyController@create_rooms', $property->id)}}">Rooms</a>
+						</div>
+						</div>
 					</div>
 				</div>
 			</div>

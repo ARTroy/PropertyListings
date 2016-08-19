@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/properties/{id}/edit', 'PropertyController@edit');
     Route::post('/properties/store', 'PropertyController@store');
     Route::post('/properties/{id}/update', 'PropertyController@update');
-    Route::post('/properties/store/rooms', 'PropertyController@rooms');
+    Route::post('/properties/{id}/store/rooms', 'PropertyController@store_rooms');
 });
 
 /*Admin

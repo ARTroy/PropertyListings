@@ -38,7 +38,7 @@
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
 									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type" required/>
-									<i class='{{$type->display_class}}' ></i>
+									<i class='{{$type->display_class}} float-center' ></i>
 									{{$type->type_name}}
 								</label>
 							</div>
@@ -49,7 +49,7 @@
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
 									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type"/>
-									<i class='{{$type->display_class}}' ></i>
+									<i class='{{$type->display_class}} float-center' ></i>
 									<p>{{$type->type_name}}</p>
 								</label>
 							</div>

@@ -34,15 +34,15 @@ class PropertyController extends Controller
 	public function edit($property_id){
 		$user = Auth::user();
 		$property = Property::findOrFail($property_id);
+		$address = $property->address;
 		return view('user.property.edit',[
-			'user'=>$user, 'property'=>$property,
+			'user'=>$user, 'property'=>$property, 'address'=>$address
 		]);
 	}
 
 	public function create_rooms($property_id){
 		$user = Auth::user();
 		$property = Property::findOrFail($property_id);
-
 		return view('user.property.create_rooms',[
 			'user'=>$user, 'property'=>$property,
 		]);
@@ -53,7 +53,7 @@ class PropertyController extends Controller
             'title' => 'required|min:4|alpha_dash',
             'line1' => 'required',
             'postcode' => 'required|min:5|alpha_dash',
-            'image' => 'required|mimes:jpeg,jpg,png,gif',
+            'image' => 'mimes:jpeg,jpg,png,gif',
             'asking_price' => 'required',
         ]);
 		$property = Property::findOrFail($property_id);
@@ -81,6 +81,21 @@ class PropertyController extends Controller
 		    		return back()->withErrors('Image upload failed.');
 		    	}
 	    	}
+	    	$address = $property->address;
+	    	if($request->has('title') )	{ $property->title = $request->input('title'); }
+	    	if($request->has('display') ){
+	    		$property->display = 1; 
+	    	} else {
+	    		$property->display = 0; 
+	    	}
+
+	    	if($request->has('line1')) { $address->line1 = $request->input('line1'); }
+	    	if($request->has('line2')) { $address->line2 = $request->input('line2'); }
+	    	if($request->has('line3')) { $address->line3 = $request->input('line3'); }
+	    	if($request->has('postcode')) { $address->postcode = $request->input('postcode'); }
+
+	    	$address->save();
+	    	$property->save();
 	    }
 	}
 
@@ -92,7 +107,7 @@ class PropertyController extends Controller
             'postcode' => 'required|min:5|alpha_dash',
             'image' => 'mimes:jpeg,jpg,png,gif',
             'property_type' =>'required|exists:property_type,id',
-            'asking_price' => 'required',
+            'asking_value' => 'required',
         ]);
         
         if($validator->fails()){
@@ -118,18 +133,28 @@ class PropertyController extends Controller
 	    	$property->image_file_name =  $image_name;
 	    	$property->image_content_type = $img->mime();
 	    	$property->image_file_size = $img->filesize();
-	    	$property->asking_price = $request->input('title');
-	    	$property->title = $request->input('asking_price');
+	    	$property->asking_value = $request->input('asking_value');
+	    	$property->title = $request->input('title');
 	    	$property->property_type_id = $request->input('property_type');
+	    	if($request->has('display') ){
+	    		$property->display = 1; 
+	    	} else {
+	    		$property->display = 0; 
+	    	}
 	    	$property->save();
 
+	    	$address->user_id = Auth::user()->id;
 	    	$address->line_1 = $request->input('line1');
 	    	$address->line_2 = $request->input('line2');
 	    	$address->line_3 = $request->input('line3');
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();
-	    	return redirect(action('PropertyController@create_rooms', [$property->id]));
+	    	return redirect(action('PropertyController@edit', [$property->id]));
         }	
+	}
+
+	public function store_rooms(Request $request, Room $room){
+
 	}
 }

@@ -19,6 +19,7 @@ class CreatePropertyTable extends Migration
             $table->integer('property_type_id');
             $table->string('legal_ownership');
             $table->string('availability');
+            $table->boolean('display')->default(false);
             $table->decimal('value', 16, 4)->nullable();
             $table->decimal('asking_value', 16, 4)->nullable();
             $table->decimal('sold_for', 16, 4)->nullable();

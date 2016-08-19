@@ -265,7 +265,17 @@ body label.property_type_lable i {
     font-size: 48px;
     display: block;
     height: 65px;
+    overflow: hidden;
+    width: 48px;
 }
+
+
+body label.property_type_lable i:before {
+    position: relative;
+    right: 5px;
+}
+
+
 
 body label.property_type_lable > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
