@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserInvite;
+use App\Models\User;
+use DateTime;
 
 class InviteController extends Controller
 {
 	/*public function __construct(User $user){
         $this->user = $user;
     }*/
+
+
+	public function index_create(){
+		return view('admin.invite.index_create', [
+			'invites' => UserInvite::all(),
+		]);
+	}
 
 	public function claim_store(Request $request){
 		if( $request->has('email') && $request->has('invite_code') ){
@@ -43,25 +52,31 @@ class InviteController extends Controller
 		}
 	}
 
-
-	public function index_create(){
-		return view('admin.invite.index_create');
-	}
-
 	public function store(Request $request){
     	$userInvite = new UserInvite();
-         
+
         if($request->has('invite_email') && 
         	(
         		strlen(trim($request->input('invite_email'))) > 0 &&
         		filter_var($request->input('invite_email'), FILTER_VALIDATE_EMAIL)
         	)
         ){
-            $userInvite->email = $request->input('invite_email');
-        } else {
-        	$userInvite->email = null;
+        	$user = User::where('email', '=', trim($request->input('invite_email')))->first();
+	        if($user){
+	        	
+	        	$userInvite->invite_email = $request->input('invite_email');
+	        	$userInvite->user_id = $user->id;
+	        	$userInvite->code = str_random(8);
+	        	$userInvite->claimed_at = new DateTime();
+	        	$userInvite->save();
+	        } else {
+	        	$userInvite->code = str_random(8);
+	        	$userInvite->invite_email = $request->input('invite_email');
+	        	$userInvite->user_id = null;
+	        	$userInvite->save();
+	        }
+	        return back()->with('message', 'saved');
         }
-        $userInvite->code = str_random(8);
-        return back();
+         return back()->withErrors('invite_email required');
 	}
 }

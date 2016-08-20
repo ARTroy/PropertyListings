@@ -251,10 +251,19 @@ body .buttong button.button.selected:first-child {
 body .panel .propcreate {
     margin:10px; max-height:125px;
 }
-body button.button {
+body .primary_container button.button {
     background-color: #65ae87;
     color:white;
 }
+body .primary_container .panel .button {
+    background-color: #65ae87;
+    color:white;
+}
+
+body .primary_container .panel h4 {
+    border-bottom: solid 2px teal;
+}
+
 
 body .over .primary_container table *  {
    color:#2b2826

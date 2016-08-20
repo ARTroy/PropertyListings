@@ -5,9 +5,12 @@
 <form action="{{ action('PropertyController@store_rooms', $property->id) }}" method="post" data-abide novalidate enctype="multipart/form-data">
 	<div class="row">
 		<div class="small-12">
-			<table>
-				<thead><th>Description</th><th>Length</th><th>Width</th><th>Remove</th></thead>	
-			</table>
+			@if(count($property->rooms) > 0)
+				<table>
+					<thead><th>Description</th><th>Length</th><th>Width</th><th>Remove</th></thead>
+					<tbody></tbody>	
+				</table>
+			@endif
 		</div>
 	</div>
 	<div class="row">
