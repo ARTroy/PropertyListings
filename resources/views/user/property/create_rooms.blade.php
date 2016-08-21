@@ -19,11 +19,10 @@
 				{{ csrf_field() }}
 				<div class="small-12 medium-12 columns">
 					<div class='row small-up-1 medium-up-6'>
-
 						@foreach($property->property_type->validRoomTypes as $type)
 							<div class="column" style="text-align:center;" >
 								<label for="rtype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" value='{{$type->id}}' />
+									<input type="radio" value='{{$type->id}}' id="rtype_{{$type->id}}" name="room_type_id"/>
 									<i class='{{$type->display_class}} float-center' ></i>
 									<p>{{$type->type_name}}</p>
 								</label>

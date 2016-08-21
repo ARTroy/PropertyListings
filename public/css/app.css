@@ -278,6 +278,13 @@ body label.property_type_lable i {
     width: 48px;
 }
 
+body label.property_type_lable i {
+    font-size: 48px;
+    display: block;
+    height: 65px;
+    overflow: hidden;
+    width: 48px;
+}
 
 body label.property_type_lable i:before {
     position: relative;
@@ -300,6 +307,16 @@ body label.property_type_lable > input:checked ~ i{ /* (RADIO CHECKED) IMAGE STY
 body label.property_type_lable > input:checked ~ p{ /* (RADIO CHECKED) IMAGE STYLES */
   color:white;
 }
+
+
+body .primary_container .panel label.property_type_lable > input:checked ~ i { /* (RADIO CHECKED) IMAGE STYLES */
+  color:#b8aa84;
+}
+body .primary_container .panel label.property_type_lable > input:checked ~ p {/* (RADIO CHECKED) IMAGE STYLES */
+  color:#b8aa84;
+}
+
+
 body .dynamic_float {
     padding-top:18px;
     float: right;
