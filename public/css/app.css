@@ -316,6 +316,17 @@ body .primary_container .panel label.property_type_lable > input:checked ~ p {/*
   color:#b8aa84;
 }
 
+body .primary_container .panel label.property_type_lable > .icon-room {
+    font-size: 68px;
+    font-weight: bold;
+    width: 60px;
+}
+body label.property_type_lable i.icon-room:before {
+        position: relative;
+    right: 7px;
+    top: -7px;
+}
+
 
 body .dynamic_float {
     padding-top:18px;

@@ -56,7 +56,7 @@
 				@foreach($properties as $property)
 					<tr style="min-height:50px; background-color:#eeeeee;">
 						<td>{{$property->title}}</td>
-						<td>{{$property->asking_price}}</td>
+						<td style="font-family: Calibri;">{{number_format($property->asking_value) }}</td>
 						<td style="padding:0px;"><a 
 							style="margin:0px; color:white; width:100%;" class="button"
 							href="{{action('PropertyController@edit', $property->id) }}"
@@ -82,9 +82,9 @@
 					<tr style="min-height:50px; background-color:#eeeeee;" >
 						{{--<td style="font-family:monospace; padding: 12px;">{{$invite->email}}</td>--}}
 
-						<td style="font-family:monospace; padding: 12px;">{{$invite->code}}</td>
-						<td style="font-family:monospace; padding: 12px;">{{$invite->claimed_at}}</td>
-						<td style="font-family:monospace; padding: 12px;">2</td>
+						<td style="font-family: Calibri;">{{$invite->code}}</td>
+						<td style="font-family: Calibri;">{{$invite->claimed_at}}</td>
+						<td style="font-family: Calibri;">2</td>
 					</tr>
 				@endforeach
 				</tbody>

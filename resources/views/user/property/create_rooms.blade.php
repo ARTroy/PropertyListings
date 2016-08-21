@@ -15,25 +15,24 @@
 	</div>
 	<div class="row">
 		<div class="small-12 columns panel">
-			<div class="small-12 columns">
-				{{ csrf_field() }}
-				<div class="small-12 medium-12 columns">
-					<div class='row small-up-1 medium-up-6'>
-						@foreach($property->property_type->validRoomTypes as $type)
-							<div class="column" style="text-align:center;" >
-								<label for="rtype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" value='{{$type->id}}' id="rtype_{{$type->id}}" name="room_type_id"/>
-									<i class='{{$type->display_class}} float-center' ></i>
-									<p>{{$type->type_name}}</p>
-								</label>
-							</div>
-						@endforeach
-					</div>
+			<h4>Add Room</h4>
+			{{ csrf_field() }}
+			<div class="small-12 medium-12 columns">
+				<div class='row small-up-1 medium-up-6'>
+					@foreach($property->property_type->validRoomTypes as $type)
+						<div class="column" style="text-align:center;" >
+							<label for="rtype_{{$type->id}}" class='property_type_lable'>	
+								<input type="radio" value='{{$type->id}}' id="rtype_{{$type->id}}" name="room_type_id"/>
+								<i class='{{$type->display_class}} float-center' ></i>
+								<p>{{$type->type_name}}</p>
+							</label>
+						</div>
+					@endforeach
 				</div>
 			</div>
 			<div class="row">
 				<div class="small-12 medium-12 columns">
-					<label>Description<input type="text" name="description"  value="{{ old('description') }}"></label>	
+					<label>Description<input type="text" name="description"  value="{{ old('description') }}" required></label>	
 				</div>	
 			</div>
 			<div class="row">
@@ -49,6 +48,9 @@
 				</div>
 				<div class="small-12 medium-3 columns">
 					<label>Length in foot<input type="text" name="size_y"  value="{{ old('size_y') }}"></label>
+				</div>
+				<div class="small-12 medium-12 columns">
+					<input type="submit" class="button" value="Add">
 				</div>
 			</div>
 		</div>
