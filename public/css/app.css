@@ -49,6 +49,11 @@ body .over  .primary_container i{
 body .primary_container .form-error, body .over  .primary_container .is-invalid-label {
     color: lightcoral;
 }
+body .over .primary_container h4 {
+    border-bottom: 2px solid #b8aa84;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
 
 body .is-invalid-input:not(:focus) {
     border-color: lightcoral;
@@ -140,7 +145,7 @@ div.alert ul {
     margin-bottom: 0px;
 }
 .title_panel {
-    border-bottom: solid 1px;
+    border-bottom: solid 2px #b8aa84;
     margin-bottom: 15px;
 }
 body .over  .primary_container *.alternative {
@@ -148,8 +153,13 @@ body .over  .primary_container *.alternative {
     font-weight: bold;
 }
 
-.primary_container .title_panel p{
+body .over .primary_container .title_panel p{
     padding-left: 8px;
+}
+body .over .primary_container .title_panel h4 {
+    border-bottom: initial;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 body .over  .primary_container input[type=text]{
@@ -261,9 +271,12 @@ body .primary_container .panel .button {
 }
 
 body .primary_container .panel h4 {
-    border-bottom: solid 2px teal;
+    border-bottom: solid 2px #b8aa84;
 }
 
+body .primary_container table td {
+    font-family: Helvetica;
+}
 
 body .over .primary_container table *  {
    color:#2b2826

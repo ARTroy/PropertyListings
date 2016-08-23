@@ -98,7 +98,8 @@
 							pattern="^[a-zA-Z0-9]{2,5}( )?[a-zA-Z0-9]{2,3}$" required></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label><input type="checkbox" name="display" value="{{ old('display') }}" checked> Display publicly</label>
+							<label><input type="checkbox" name="display" 
+							@if(old('display') == 0) @else checked @endif > Display Address Publicly</label>
 						</div>
 					</div>
 				</div>

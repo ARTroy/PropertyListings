@@ -19,7 +19,7 @@
 			<div class="panel" style="padding:0px">
 				<div class='row collapse'>
 					<div class='small-9 columns propcreate' style="margin-right: 2px;">
-						<h4>Create Property</h4>
+						<h4 >Create Property</h4>
 						<p style="margin-bottom:0px">Go here to add a new property to the list. This will require an invitaion code bound to your account.</p>
 					</div>
 					<div class='columns' style="width:20%">
@@ -56,7 +56,7 @@
 				@foreach($properties as $property)
 					<tr style="min-height:50px; background-color:#eeeeee;">
 						<td>{{$property->title}}</td>
-						<td style="font-family: Calibri;">{{number_format($property->asking_value) }}</td>
+						<td>{{number_format($property->asking_value) }}</td>
 						<td style="padding:0px;"><a 
 							style="margin:0px; color:white; width:100%;" class="button"
 							href="{{action('PropertyController@edit', $property->id) }}"
@@ -82,9 +82,9 @@
 					<tr style="min-height:50px; background-color:#eeeeee;" >
 						{{--<td style="font-family:monospace; padding: 12px;">{{$invite->email}}</td>--}}
 
-						<td style="font-family: Calibri;">{{$invite->code}}</td>
-						<td style="font-family: Calibri;">{{$invite->claimed_at}}</td>
-						<td style="font-family: Calibri;">2</td>
+						<td>{{$invite->code}}</td>
+						<td>{{$invite->claimed_at}}</td>
+						<td>2</td>
 					</tr>
 				@endforeach
 				</tbody>

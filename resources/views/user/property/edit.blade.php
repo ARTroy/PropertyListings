@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-	<div class="small-12 columns panel">
+	<div class="small-12 columns">
 		<form action="{{ action('PropertyController@update', $property->id) }}" method="post" data-abide novalidate enctype="multipart/form-data">
 		{{ csrf_field() }}
 			<div class="small-12 medium-12 columns">
@@ -17,7 +17,7 @@
 						<div class="small-8 columns">
 						<label>Image 
 							<button class="file-upload">            
-								<input type="file" class="file-input" name="image" required style="padding:0px;">
+								<input type="file" class="file-input" name="image" style="padding:0px;">
 							</button>
 							
 						</label>
@@ -44,9 +44,13 @@
 					<div class="small-12 medium-6 columns">
 						<label>Postcode<input type="text" name="postcode" value="{{ $address->postcode }}" required></label>
 					</div>
-					<div class="small-12 medium-12 columns" style="margin-bottom:10px;">
-						<label><input type="checkbox" name="display" value="{{ $address->display }}" 
-						@if($property->display) checked @endif> Display publicly</label>
+					<div class="small-12 medium-6 columns" style="margin-top:15px;">
+						<label><input type="checkbox" name="display" 
+						@if($property->display == 1) checked @endif> Display publicly</label>
+					</div>
+					<div class="small-12 medium-6 columns">
+						<label >Asking price (£)
+						<input type="text" name="asking_value" value="{{ (float)$property->asking_value }}" required pattern='number'></label>
 					</div>
 
 					<div class="small-12 medium-12 columns">
