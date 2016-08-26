@@ -32,6 +32,18 @@ class PropertyController extends Controller
 		]);
 	}
 
+	public function create_rooms($property_id){
+		$user = Auth::user();
+		$property = Property::findOrFail($property_id);
+		return view('user.property.create_room',[
+			'user'=>$user, 'property'=>$property,
+		]);
+	}
+
+	public function publish($property_id){
+		
+	}
+
 	public function edit($property_id){
 		$user = Auth::user();
 		$property = Property::findOrFail($property_id);
@@ -41,11 +53,13 @@ class PropertyController extends Controller
 		]);
 	}
 
-	public function create_rooms($property_id){
+	public function edit_room($property_id, $room_id){
 		$user = Auth::user();
+		$room = Room::findOrFail($room_id);
 		$property = Property::findOrFail($property_id);
-		return view('user.property.create_rooms',[
-			'user'=>$user, 'property'=>$property,
+		dd('in');
+		return view('user.property.edit_rooms',[
+			'user'=>$user, 'property'=>$property,'room'=>$room
 		]);
 	}
 
@@ -95,7 +109,7 @@ class PropertyController extends Controller
 
 	    	$address->save();
 	    	$property->save();
-	    	return redirect(action('PropertyController@create_rooms', [$property->id]));
+	    	return redirect(action('PropertyController@edit', [$property->id]));
 	    }
 	}
 
@@ -146,13 +160,51 @@ class PropertyController extends Controller
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();
-	    	return redirect(action('PropertyController@edit', [$property->id]));
+	    	return redirect(action('PropertyController@create_rooms', [$property->id]));
         }	
+	}
+
+	public function update_room(Request $request, $property_id, $room_id){
+		$validator = Validator::make( $request->all(), [
+            'title' => 'required|min:4',
+            'image' => 'mimes:jpeg,jpg,png,gif',
+        ]);
+        
+        if($validator->fails()){
+        	return back()->withErrors($validator)->withInput();
+        } else {
+        	if(isset($request->all()['image'])){
+				try 
+		    	{	
+		    		$image =  $request->file('image');
+		    		$image_name =  $image->getClientOriginalName();
+		    		$imageRealPath =  $image->getRealPath();
+		    		$extension =  $image->getClientOriginalExtension();
+			    	$img = Image::make($imageRealPath); // use this if you want facade style code
+			    	$img->resize(intval(400), null, function($constraint) {
+			    		 $constraint->aspectRatio();
+			    	});
+			    	$img->save(public_path('images'). '/'. $image_name);
+			    	$room->image_file_name =  $image_name;
+			    	$room->image_content_type = $img->mime();
+			    	$room->image_file_size = $img->filesize();
+		    	}
+		    	catch(Exception $e) {
+		    		return back()->withErrors('Image upload failed.');
+		    	}
+		    }
+		    //Name
+		    $room->title =  $request->input('title');
+        	$room->size_x = $request->input('size_x');
+	    	$room->size_y = $request->input('size_y');
+	    	$room->save();
+	    	return redirect(action('PropertyController@edit', [$property->id]))->with('info', 'saved');
+        }
 	}
 
 	public function store_rooms(Request $request, Room $room, $property_id){
 		$validator = Validator::make( $request->all(), [
-            'description' => 'required|min:4',
+            'title' => 'required|min:4',
             'image' => 'mimes:jpeg,jpg,png,gif',
             'room_type_id' =>'required|exists:room_type,id'
         ]);
@@ -181,14 +233,24 @@ class PropertyController extends Controller
 		    		return back()->withErrors('Image upload failed.');
 		    	}
 		    }
-	    	
+	    	$room->title =  $request->input('title');
 	    	$room->size_x = $request->input('size_x');
 	    	$room->size_y = $request->input('size_y');
 	    	$room->description = $request->input('description');
 	    	$room->room_type_id = $request->input('room_type_id');
 	    	$room->property_id = $property_id;
 	    	$room->save();
-	    	return back()->with('message', 'complete');
+	    	return redirect(action('PropertyController@edit', [$property->id]))->with('info', 'Room Saved');
 	    }
+	}
+
+	public function delete_room($property_id, $room_id){
+		$user = Auth::user();
+		$room = Room::findOrFail($room_id);
+		
+		if($room->property->user_id == $user->id){
+			$room->delete();
+			return back()->with('info', 'Room Deleted');
+		}
 	}
 }

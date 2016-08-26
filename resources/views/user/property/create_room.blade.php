@@ -4,24 +4,17 @@
 
 <form action="{{ action('PropertyController@store_rooms', $property->id) }}" method="post" data-abide novalidate enctype="multipart/form-data">
 	<div class="row">
-		<div class="small-12">
-			@if(count($property->rooms) > 0)
-				<table>
-					<thead><th>Description</th><th>Length</th><th>Width</th><th>Remove</th></thead>
-					<tbody></tbody>	
-				</table>
-			@endif
-		</div>
-	</div>
-	<div class="row">
 		<div class="small-12 columns">
 			<h4>Room Details</h4>
 			{{ csrf_field() }}
 			
 			<div class="row">
-				<div class="small-12 medium-12 columns">
-					<label>Description<input type="text" name="description"  value="{{ old('description') }}" required></label>	
-				</div>	
+				<div class="small-12 medium-6 columns">
+					<label>Title<input type="text" name="title"  value="{{ old('title') }}" required></label>	
+				</div>
+				<div class="small-12 medium-6 columns">
+					<label>Description<input type="text" name="description"  value="{{ old('description') }}" ></label>	
+				</div>
 			</div>
 			<div class="row">
 				<div class="small-12 medium-6 columns">

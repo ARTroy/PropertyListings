@@ -75,7 +75,9 @@ body .over .primary_container  input[type=file]{
     color:#2b2826;
 }
 
-
+body ul{
+    margin-bottom:0px;
+}
 body h1, body h2, body h3,body h4, body h5 {
 	font-family:railway-bold;
 }

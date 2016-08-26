@@ -13,7 +13,7 @@ class Property extends Model
     }
 
     public function rooms(){
-    	 return $this->hasMany('App\Models\Room', 'id', 'property_id');
+    	 return $this->hasMany('App\Models\Room', 'property_id', 'id');
     }
 
     public function property_type(){

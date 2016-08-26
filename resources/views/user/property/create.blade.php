@@ -107,7 +107,7 @@
 			<div class='row divide_row' style="margin-bottom:0px; border-bottom:none;">
 				<div class='small-4 columns'>
 					<span class="badge badge_style">5</span>
-					<p>Add your asking price,then save and progress</p>
+					<p>Add your asking price, then save and progress</p>
 				</div>
 				<div class="small-8 medium-8 columns">
 					<div class="small-12 medium-6 columns">
@@ -126,7 +126,6 @@
 	</div>	
 	</form>
 	</div>
-
 </div>
 
 @endsection

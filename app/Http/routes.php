@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/properties/store', 'PropertyController@store');
     Route::post('/properties/{id}/update', 'PropertyController@update');
     Route::post('/properties/{id}/store/rooms', 'PropertyController@store_rooms');
+    Route::get('/properties/{property_id}/room/{room_id}/delete', 'PropertyController@delete_room');
 });
 
 //Admin
