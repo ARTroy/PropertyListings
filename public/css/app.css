@@ -238,6 +238,9 @@ body .row.divide_row{
 body .row.divide_row .badge.badge_style{
     background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px; font-family: sans-serif;
 }
+body .primary_container .badge.badge_style{
+    background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px; font-family: sans-serif;
+}
 
 body .buttong button.button:last-child:hover,
 body .buttong button.button:last-child:hover, 

@@ -29,14 +29,17 @@ Route::post('/password/reset', ['as' => 'auth.password.reset', 'uses' => 'Passwo
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', 'UserController@profile');
     Route::get('/properties/create', 'PropertyController@create');
-    Route::get('/properties/{id}/create/rooms', 'PropertyController@create_rooms');
+    Route::get('/properties/{id}/rooms', 'PropertyController@create_rooms');
     Route::get('/properties/{id}/edit', 'PropertyController@edit');
+    Route::get('/properties/{id}/publish', 'PropertyController@publish');
     Route::post('/properties/store', 'PropertyController@store');
     Route::post('/properties/{id}/update', 'PropertyController@update');
     Route::post('/properties/{id}/store/rooms', 'PropertyController@store_rooms');
+    Route::post('/properties/{id}/publish', 'PropertyController@publish_store');
+    Route::post('/properties/{id}/store/published', 'PropertyController@published_update');
     Route::get('/properties/{property_id}/room/{room_id}/delete', 'PropertyController@delete_room');
 });
-
+ 
 //Admin
 Route::group(['middleware' => ['admin']],  function(){
 	//Route::get('admin/properties', 'UserController@profileAdmin');

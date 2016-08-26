@@ -41,7 +41,11 @@ class PropertyController extends Controller
 	}
 
 	public function publish($property_id){
-		
+		$user = Auth::user();
+		$property = Property::findOrFail($property_id);
+		return view('user.property.publish',[
+			'user'=>$user, 'property'=>$property,
+		]);
 	}
 
 	public function edit($property_id){
@@ -164,6 +168,19 @@ class PropertyController extends Controller
         }	
 	}
 
+	public function published_update(Request $request, $property_id){
+		$validator = Validator::make( $request->all(), [
+            'title' => 'required|min:4|alpha_dash',
+            'asking_value' =>'required'
+        ]);
+		$property = Property::findOrFail($property_id);
+        if($request->has('asking_value')) { $property->asking_value = $request->input('asking_value'); }
+	    if($request->has('title') )	{ $property->title = $request->input('title'); }
+	    if($request->has('display') ){ $property->display = 1; } else { $property->display = 0; }
+		$property->save();
+		return redirect(action('PropertyController@edit', [$property->id]));//->with('info', 'Property details updated');
+	}
+
 	public function update_room(Request $request, $property_id, $room_id){
 		$validator = Validator::make( $request->all(), [
             'title' => 'required|min:4',
@@ -240,7 +257,7 @@ class PropertyController extends Controller
 	    	$room->room_type_id = $request->input('room_type_id');
 	    	$room->property_id = $property_id;
 	    	$room->save();
-	    	return redirect(action('PropertyController@edit', [$property->id]))->with('info', 'Room Saved');
+	    	return redirect(action('PropertyController@create_rooms', [$property_id]))->with('info', 'Room Saved');
 	    }
 	}
 
@@ -251,6 +268,17 @@ class PropertyController extends Controller
 		if($room->property->user_id == $user->id){
 			$room->delete();
 			return back()->with('info', 'Room Deleted');
+		}
+	}
+
+	public function publish_store($property_id){
+		$user = Auth::user();
+		$property = Property::findOrFail($property_id);
+		
+		if($property->user_id == $user->id){
+			$property->status = 'published';
+			$property->save();
+			return redirect(action('UserController@profile'))->with('info', 'Property published');
 		}
 	}
 }
