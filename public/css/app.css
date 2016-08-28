@@ -82,6 +82,27 @@ body h1, body h2, body h3,body h4, body h5 {
 	font-family:railway-bold;
 }
 
+body .primary_container .label_input{
+    display: inline;
+    width: 78px;
+    margin-bottom: 0px;
+    padding: 0px;
+    outline: none;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    font-family:Arial;
+    font-size: 14px;
+    height: initial;
+}
+
+body .slider-handle {
+        background-color:#65ae87
+}
+body .slider-handle:hover {
+        background-color:seagreen
+}
 i.arrowheader {
     font-size: 25px;
     top: -5px;
@@ -173,7 +194,7 @@ body .over  .primary_container input[type=checkbox]{
 }
 
 body .primary_container .panel {
-    padding:25px;
+    padding:20px;
     border: solid 3px #73b592;
     background-color:white;
 }
@@ -200,23 +221,18 @@ body .panel .status_pro {
     height:124px;
 }
 body .panel .sidebutton {
-    background-color: #73b592; height: 150px; width:100%;
+    background-color: #73b592;
     line-height: initial;
-    margin-bottom: -6px;
-    position: relative;
-    top: -3px;
-    right: -3px;
+    text-align: center;
 }
 body .panel .sidebutton a {
     display: block;
     height: 100%;
-    text-align: center;
+    padding-top: 25%;
 }
-body .panel .sidebutton a i {
+body .panel .sidebutton i {
     font-size:45px;
     color: white;
-    top:30%;
-    position: relative;
 }
 
 body .button,
@@ -261,10 +277,19 @@ body .buttong .button{
 body .buttong button.button.selected:last-child,
 body .buttong button.button.selected:first-child {
     background-color:seagreen;
-} 
+}
+
+body .buttong.buttongn{
+    margin-top:0px;
+}
+body .buttong.buttongn .button{
+    font-size:15px;
+    margin-bottom:7px;
+}
+
 
 body .panel .propcreate {
-    margin:10px; max-height:125px;
+    
 }
 body .primary_container button.button {
     background-color: #65ae87;
@@ -280,7 +305,8 @@ body .primary_container .panel h4 {
 }
 
 body .primary_container table td {
-    font-family: Helvetica;
+    font-family: Arial;
+        font-size: 14px;
 }
 
 body .over .primary_container table *  {
@@ -350,15 +376,7 @@ body .dynamic_float {
     padding-top:18px;
     float: right;
 }
-@media only screen and (max-width: 40em) {
-    body .panel .propcreate {
-        margin: 8px;
-        max-height:160px;
-    }
-    body .panel .sidebutton {
-        height:163px;
-    }
-    
+@media only screen and (max-width: 40em) {    
     body .over  .dynamic_float {
         padding-top: 5px;
         padding-bottom: 10px;
@@ -366,5 +384,8 @@ body .dynamic_float {
     }
     body .panel .status_pro {
         height:160px;
+    }
+    body .header .nav{
+        margin-bottom: 5px;
     }
 }

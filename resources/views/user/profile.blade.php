@@ -14,28 +14,26 @@
 <br>
 <div class="row">
 	<div class="small-12 columns">
-	<div class="row small-up-1 medium-up-2 ">
-		<div class="columns">
-			<div class="panel" style="padding:0px">
-				<div class='row collapse'>
-					<div class='small-9 columns propcreate' style="margin-right: 2px;">
-						<h4 >Create Property</h4>
-						<p style="margin-bottom:0px">Go here to add a new property to the list. This will require an invitaion code bound to your account.</p>
+	<div class="row small-up-1 medium-up-2 " data-equalizer >
+		<div class="columns"  data-equalizer-watch>
+			<div class="panel" style="padding:0px; height:100%">
+				<div class='row collapse' style="height: inherit;">
+					<div class='small-9 columns ' style="height: inherit;">
+						<h4 style="margin:10px;">Create Property</h4>
+						<p style="margin:10px">Go here to add a new property to the list. This will require an invitaion code bound to your account.</p>
 					</div>
-					<div class='columns' style="width:20%">
-						<div class="sidebutton ">
-							<a href="{{action('PropertyController@create')}}"><i class="fi-arrow-right"></i>
+					<div class="small-3 columns sidebutton" style="height: inherit;">	
+							<a  href="{{action('PropertyController@create')}}"><i class="fi-arrow-right"></i>
 							</a>
-						</div>
-					</div>
+					</div>	
 				</div>
 			</div>
 		</div>
-		<div class="columns">
-			<div class="panel" style="padding:10px;">
-				<div class='small-12 status_pro' style="margin-right:2px;">
-				<h4 >Status</h4>
-				<p>You have so far claimed {{count($invites)}} invite codes, allowing you to create {{count($invites)*2}} properties.  Of these properties you have currently created {{count($properties)}}.</p>
+		<div class="columns"  data-equalizer-watch>
+			<div class="panel" style="padding:0px;">
+				<div class='small-12' style="height: inherit;">
+				<h4 style="margin:10px;">Status</h4>
+				<p style="margin:10px;">You have so far claimed {{count($invites)}} invite codes, allowing you to create {{count($invites)*2}} properties.  Of these properties you have currently created {{count($properties)}}.</p>
 				</div>
 			</div>
 		</div>
