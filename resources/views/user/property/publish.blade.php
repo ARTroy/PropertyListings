@@ -1,6 +1,7 @@
 @extends('common.layout')
 
 @section('content')
+<div class="primary_container">
 <div class="row">
 	<div class="small-12 columns">
 		<form action="{{ action('PropertyController@publish_store', $property->id) }}" method="post" data-abide novalidate enctype="multipart/form-data">
@@ -13,5 +14,6 @@
 			<button type="submit" name="publish" class="button" >I understand and wish to publish</button>
 		</form>
 	</div>
+</div>
 </div>
 @stop

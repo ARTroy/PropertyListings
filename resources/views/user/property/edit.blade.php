@@ -1,6 +1,8 @@
 @extends('common.layout')
 
 @section('content')
+
+<div class="primary_container">
 <div class="row">
 	<div class="small-12 columns">
 		@if($property->status == 'published')
@@ -97,5 +99,6 @@
 		@endif
 	</div>
 
+</div>
 </div>
 @endsection

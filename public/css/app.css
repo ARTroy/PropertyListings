@@ -15,41 +15,41 @@
 /* B1F6CB */
 .header {
 	position: relative;
-    height: 95px;
     top: 0px;
     z-index: 999;
     margin: auto;
     width: 100%;
-    display: inline-table;
 }
 
-body .over, body .white  {
+body .over  {
     height: 100%;
     width: 100%;
     position: absolute;
     display: table;
 }
 
-body .over {
+body .primary_container {
     /*background-color:#2b2826;*/
     background-color:teal;
+    height: inherit;
+    padding-top:20px;
 }
 
-body .over  *, body .white *{
+body .over  *{
     font-family:railway;
 }
 
-body .over  .primary_container * {
+body .over .primary_container * {
     color:#fff9eb;
 } 
-body .over  .primary_container i{
+body .over .primary_container i{
     color: #b8aa84;
 }
 
-body .primary_container .form-error, body .over  .primary_container .is-invalid-label {
+body .over .form-error, body .over  .primary_container .is-invalid-label {
     color: lightcoral;
 }
-body .over .primary_container h4 {
+body .over h4 {
     border-bottom: 2px solid #b8aa84;
     padding-bottom: 5px;
     margin-bottom: 15px;
@@ -151,11 +151,9 @@ i.clipheader:before
 
 body .header .nav {
     background-color: #fffaf5;
-    min-height: 40px;
+    min-height: 30px;
     border-bottom: solid #65ae87;
     /*box-shadow: 0px 1px 3px 2px seagreen;*/
-    
-    margin-bottom: 30px;
 }
 body .header .nav *{
     color:#b8aa84;
@@ -171,7 +169,7 @@ div.alert ul {
     border-bottom: solid 2px #b8aa84;
     margin-bottom: 15px;
 }
-body .over  .primary_container *.alternative {
+body .over .primary_container *.alternative {
     color:#b8aa84;
     font-weight: bold;
 }
@@ -385,7 +383,7 @@ body .dynamic_float {
     body .panel .status_pro {
         height:160px;
     }
-    body .header .nav{
-        margin-bottom: 5px;
+    body .primary_container{
+        padding-top: 5px;
     }
 }

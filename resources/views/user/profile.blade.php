@@ -1,6 +1,7 @@
 @extends('common.layout')
 
 @section('content')
+<div class="primary_container">
 <div class="row">
 	<div class="small-12 columns">
 		<div class="row">
@@ -96,5 +97,6 @@
 		</div>
 	</div>
 	</div>
+</div>
 </div>
 @endsection

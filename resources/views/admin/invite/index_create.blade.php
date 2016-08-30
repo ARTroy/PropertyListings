@@ -1,7 +1,7 @@
 @extends('common.layout')
 
 @section('content')
-	
+<div class="primary_container">	
 	<div class="row">
 		<div class="small-12 columns">
 			<table>
@@ -38,6 +38,6 @@
 			
 		</div>
 	</div>
-    
+   </div>
 @endsection
 

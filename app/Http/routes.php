@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/property/{id}', 'PropertyController@view');
+Route::get('/search','HomeController@search');
 
 // Public invite code claim
 Route::get('/claim', 'InviteController@claim_create');

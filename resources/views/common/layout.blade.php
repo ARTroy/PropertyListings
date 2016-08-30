@@ -4,7 +4,7 @@
     	@include('common.head')
     </head>
     <body>
-        <div class="@if(isset($white)) white @else over @endif" >
+        <div class="over" >
         @hasSection('header')
             @yield('header')
         @else
@@ -78,9 +78,7 @@
             </div>
         </div> 
         @endif
-		<div class="primary_container">
-			@yield('content')
-		</div>
+		@yield('content')
         </div>
     </body>
 </html>

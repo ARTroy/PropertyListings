@@ -1,7 +1,7 @@
 @extends('common.layout')
 
 @section('content')
-
+<div class="primary_container">
 <div class="row">
 	<div class="small-12 columns" style="margin-bottom:15px">
 		<div class='row' style="margin-bottom:15px">
@@ -80,5 +80,6 @@
 		</div>
 	</div>
 	</form>
+</div>
 </div>
 @endsection

@@ -1,6 +1,7 @@
 @extends('common.layout')
 
 @section('content')
+<div class="primary_container">
 <div class="row">
 	<div class="small-12 columns">
 	<form action="{{ action('PropertyController@store') }}" method="post" data-abide novalidate enctype="multipart/form-data">
@@ -127,5 +128,5 @@
 	</form>
 	</div>
 </div>
-
+</div>
 @endsection
