@@ -12,8 +12,15 @@ class HomeController extends Controller
 	public function index(){
 		$residential = PropertyType::where('use', '=', 'Residential')->get();
 		$commercial = PropertyType::where('use', '=', 'Commercial')->get();
+		
+		$properties = Property::where('property.status', '=', 'published')
+		->orderBy('property.created_at', 'DESC')
+		->take(3)->get();
+
 		return view('public.home', [ 
-			'residential'=>$residential, 'commercial'=>$commercial
+			'residential'=>$residential,
+			'commercial'=>$commercial,
+			'last_two'=>$properties
 		]);
 	}
 

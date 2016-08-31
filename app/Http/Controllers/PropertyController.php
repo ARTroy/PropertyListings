@@ -69,9 +69,9 @@ class PropertyController extends Controller
 
 	public function update(Request $request, $property_id){
 		$validator = Validator::make( $request->all(), [
-            'title' => 'required|min:4|alpha_dash',
+            'title' => 'required|min:4',
             'line1' => 'required',
-            'postcode' => 'required|min:5|alpha_dash',
+            'postcode' => 'required|min:5|alpha_num_spaces',
             'image' => 'mimes:jpeg,jpg,png,gif',
             'asking_value' => 'required',
         ]);
@@ -96,12 +96,11 @@ class PropertyController extends Controller
 			    		 $constraint->aspectRatio();
 			    	});
 			    	$img->save(public_path('images'). '/'. $image_name);
-			    	$img2->save(public_path('images'). '/'. $image_name.'_thumb');
+			    	$img2->save(public_path('images'). '/'. 'thumb_'.$image_name);
 
 			    	$property->image_file_name =  $image_name;
-			    	$property->image_thumb_file_name =  $image_name.'_thumb';
+			    	$property->image_thumb_file_name = 'thumb_'.$image_name;
 			    	$property->image_content_type = $img->mime();
-			    	//$property->image_file_size = $img->filesize();
 		    	}
 		    	catch(Exception $e) {
 		    		return back()->withErrors('Image upload failed.');
@@ -126,10 +125,10 @@ class PropertyController extends Controller
 
 	public function store(Request $request, Property $property, Address $address){
         $validator = Validator::make( $request->all(), [
-            'title' => 'required|min:4|alpha_dash',
+            'title' => 'required|min:4',
             'property_type' => 'required',
             'line1' => 'required',
-            'postcode' => 'required|min:5|alpha_dash',
+            'postcode' => 'required|min:5|alpha_num_spaces',
             'image' => 'mimes:jpeg,jpg,png,gif',
             'property_type' =>'required|exists:property_type,id',
             'asking_value' => 'required',
@@ -146,18 +145,25 @@ class PropertyController extends Controller
 	    		$extension =  $image->getClientOriginalExtension();
 
 		    	$img = Image::make($imageRealPath); // use this if you want facade style code
-		    	$img->resize(intval(400), null, function($constraint) {
+		    	$img2 = Image::make($imageRealPath);
+		    	$img->resize(intval(700), null, function($constraint) {
+		    		 $constraint->aspectRatio();
+		    	});
+		    	$img2->fit(intval(350), null, function($constraint) {
 		    		 $constraint->aspectRatio();
 		    	});
 		    	$img->save(public_path('images'). '/'. $image_name);
+		    	$img2->save(public_path('images'). '/'. 'thumb_'.$image_name);
 	    	}
 	    	catch(Exception $e) {
 	    		return back()->withErrors('Image upload failed.');
 	    	}
-	    	$property->user_id = Auth::user()->id;
+	    	
 	    	$property->image_file_name =  $image_name;
+	    	$property->image_thumb_file_name =  $image_name.'_thumb';
 	    	$property->image_content_type = $img->mime();
-	    	$property->image_file_size = $img->filesize();
+
+	    	$property->user_id = Auth::user()->id;
 	    	$property->asking_value = $request->input('asking_value');
 	    	$property->title = $request->input('title');
 	    	$property->property_type_id = $request->input('property_type');
@@ -205,13 +211,17 @@ class PropertyController extends Controller
 		    		$imageRealPath =  $image->getRealPath();
 		    		$extension =  $image->getClientOriginalExtension();
 			    	$img = Image::make($imageRealPath); // use this if you want facade style code
-			    	$img->resize(intval(400), null, function($constraint) {
+			    	$img2 = Image::make($imageRealPath);
+			    	$img->resize(intval(700), null, function($constraint) {
+			    		 $constraint->aspectRatio();
+			    	});
+			    	$img2->fit(intval(350), null, function($constraint) {
 			    		 $constraint->aspectRatio();
 			    	});
 			    	$img->save(public_path('images'). '/'. $image_name);
+			    	$img2->save(public_path('images'). '/'. 'thumb_'.$image_name);
 			    	$room->image_file_name =  $image_name;
 			    	$room->image_content_type = $img->mime();
-			    	$room->image_file_size = $img->filesize();
 		    	}
 		    	catch(Exception $e) {
 		    		return back()->withErrors('Image upload failed.');
@@ -245,13 +255,18 @@ class PropertyController extends Controller
 		    		$imageRealPath =  $image->getRealPath();
 		    		$extension =  $image->getClientOriginalExtension();
 			    	$img = Image::make($imageRealPath); // use this if you want facade style code
-			    	$img->resize(intval(400), null, function($constraint) {
+			    	$img2 = Image::make($imageRealPath);
+			    	$img->resize(intval(700), null, function($constraint) {
+			    		 $constraint->aspectRatio();
+			    	});
+			    	$img2->fit(intval(350), null, function($constraint) {
 			    		 $constraint->aspectRatio();
 			    	});
 			    	$img->save(public_path('images'). '/'. $image_name);
+			    	$img2->save(public_path('images'). '/'.'thumb_'. $image_name);
 			    	$room->image_file_name =  $image_name;
+			    	$room->image_thumb_file_name = 'thumb_'.$image_name;
 			    	$room->image_content_type = $img->mime();
-			    	$room->image_file_size = $img->filesize();
 		    	}
 		    	catch(Exception $e) {
 		    		return back()->withErrors('Image upload failed.');

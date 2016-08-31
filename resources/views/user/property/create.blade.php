@@ -38,7 +38,11 @@
 						@foreach($residential as $type)
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type" required/>
+									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type" required
+									@if(old('property_type') == $type->id)
+										checked
+									@endif
+									/>
 									<i class='{{$type->display_class}} float-center' ></i>
 									{{$type->type_name}}
 								</label>
@@ -49,7 +53,11 @@
 						@foreach($commercial as $type)
 							<div class="column" style="text-align:center;" >
 								<label for="ptype_{{$type->id}}" class='property_type_lable'>	
-									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type"/>
+									<input type="radio" value='{{$type->id}}' id='ptype_{{$type->id}}' name="property_type"
+									@if(old('property_type') == $type->id)
+										checked
+									@endif
+									/>
 									<i class='{{$type->display_class}} float-center' ></i>
 									<p>{{$type->type_name}}</p>
 								</label>
@@ -100,7 +108,7 @@
 						</div>
 						<div class="small-12 medium-6 columns">
 							<label><input type="checkbox" name="display" 
-							@if(old('display') == 0) @else checked @endif > Display location publicly</label>
+							@if(!old('display') || old('display') == 'on' ) checked @else  @endif > Display location publicly</label>
 						</div>
 					</div>
 				</div>

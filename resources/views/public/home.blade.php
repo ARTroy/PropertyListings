@@ -102,9 +102,12 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row" style="padding-top:20px">
 	<div class="small-12 columns">
-		
+		<div class='row small-up-1 medium-up-3'>
+		@foreach($last_two as $property)
+			@include('common.property')
+		@endforeach
 	</div>
 </div>
 @endsection
