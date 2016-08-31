@@ -15,8 +15,8 @@ class AddImageFieldsToPropertyTable extends Migration {
         Schema::table('property', function(Blueprint $table) {
 
             $table->string('image_file_name')->nullable();
-            $table->integer('image_file_size')->nullable()->after('image_file_name');
-            $table->string('image_content_type')->nullable()->after('image_file_size');
+            $table->string('image_thumb_file_name')->nullable();
+            $table->string('image_content_type')->nullable()->after('image_file_name');
             $table->timestamp('image_updated_at')->nullable()->after('image_content_type');
 
         });
@@ -33,7 +33,7 @@ class AddImageFieldsToPropertyTable extends Migration {
         Schema::table('property', function(Blueprint $table) {
 
             $table->dropColumn('image_file_name');
-            $table->dropColumn('image_file_size');
+            $table->dropColumn('image_thumb_file_name');
             $table->dropColumn('image_content_type');
             $table->dropColumn('image_updated_at');
 

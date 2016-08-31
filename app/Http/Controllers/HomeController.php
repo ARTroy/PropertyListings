@@ -31,7 +31,7 @@ class HomeController extends Controller
 		}
 		$properties = $properties->where('property.asking_value', '>=', $request->input('min_slider'))
 		->orderBy('property.asking_value', 'ASC')
-		->get();
+		->paginate(10);
 		
 		dd($properties->all());
 

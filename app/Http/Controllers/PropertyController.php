@@ -88,13 +88,20 @@ class PropertyController extends Controller
 		    		$extension =  $image->getClientOriginalExtension();
 
 			    	$img = Image::make($imageRealPath); // use this if you want facade style code
-			    	$img->resize(intval(400), null, function($constraint) {
+			    	$img2 = Image::make($imageRealPath);
+			    	$img->resize(intval(1170), null, function($constraint) {
+			    		 $constraint->aspectRatio();
+			    	});
+			    	$img2->fit(intval(400), null, function($constraint) {
 			    		 $constraint->aspectRatio();
 			    	});
 			    	$img->save(public_path('images'). '/'. $image_name);
+			    	$img2->save(public_path('images'). '/'. $image_name.'_thumb');
+
 			    	$property->image_file_name =  $image_name;
+			    	$property->image_thumb_file_name =  $image_name.'_thumb';
 			    	$property->image_content_type = $img->mime();
-			    	$property->image_file_size = $img->filesize();
+			    	//$property->image_file_size = $img->filesize();
 		    	}
 		    	catch(Exception $e) {
 		    		return back()->withErrors('Image upload failed.');
