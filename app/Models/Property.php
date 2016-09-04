@@ -19,4 +19,8 @@ class Property extends Model
     public function property_type(){
     	return $this->hasOne('App\Models\PropertyType', 'id','property_type_id');
     }
+
+    public function room_summary(){
+        
+    }
 }

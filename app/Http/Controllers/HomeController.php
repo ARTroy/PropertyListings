@@ -15,7 +15,7 @@ class HomeController extends Controller
 		
 		$properties = Property::where('property.status', '=', 'published')
 		->orderBy('property.created_at', 'DESC')
-		->take(3)->get();
+		->take(4)->get();
 
 		return view('public.home', [ 
 			'residential'=>$residential,
@@ -25,6 +25,8 @@ class HomeController extends Controller
 	}
 
 	public function search(Request $request){
+		$residential = PropertyType::where('use', '=', 'Residential')->get()->keyBy('id');
+		$commercial = PropertyType::where('use', '=', 'Commercial')->get()->keyBy('id');
 
 		$properties = Property::where('property.status', '=', 'published');
 		if($request->input('property_type_resi') > 0){
@@ -39,10 +41,10 @@ class HomeController extends Controller
 		$properties = $properties->where('property.asking_value', '>=', $request->input('min_slider'))
 		->orderBy('property.asking_value', 'ASC')
 		->paginate(10);
-		
-		dd($properties->all());
 
-		return view('public.results', [ 
+		return view('public.results', [
+			'residential'=>$residential,
+			'commercial'=>$commercial,
 			'properties'=> $properties
 		]);
 	}

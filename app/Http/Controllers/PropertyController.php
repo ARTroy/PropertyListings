@@ -160,7 +160,7 @@ class PropertyController extends Controller
 	    	}
 	    	
 	    	$property->image_file_name =  $image_name;
-	    	$property->image_thumb_file_name =  $image_name.'_thumb';
+	    	$property->image_thumb_file_name =  'thumb_'.$image_name;
 	    	$property->image_content_type = $img->mime();
 
 	    	$property->user_id = Auth::user()->id;
@@ -303,4 +303,5 @@ class PropertyController extends Controller
 			return redirect(action('UserController@profile'))->with('info', 'Property published');
 		}
 	}
+
 }
