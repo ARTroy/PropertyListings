@@ -18,7 +18,7 @@ class CreateAddressTable extends Migration
             $table->integer('property_id')->nullable();
             $table->string('line_1');
 			$table->string('line_2')->nullable();
-			$table->string('line_3')->nullable();
+			$table->string('locality');
 			$table->string('county')->nullable();
             $table->string('postcode');
             $table->string('country')->nullable();

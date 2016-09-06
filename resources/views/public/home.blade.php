@@ -15,7 +15,7 @@
 						<p style="margin-bottom:0px; text-align:center;">
 							<i class="fi-mail" style="font-size:50px; position: relative; top:-9px;"></i>
 						</p>
-					</div>
+					</div>2
 				</div>
 				<p>To list your property, enter an invitation code provided to you via email, or during communications with any of our partners.</p>
 
@@ -37,7 +37,7 @@
 <div class="row" style="padding-top:20px">
 	<div class="small-12 columns">
 		<h5 style="border-bottom: solid 2px #b8aa84; display:inline-block; margin-bottom:20px">Recent Properties</h5>
-		<div class='row small-up-1 medium-up-4'>
+		<div class='row small-up-1 medium-up-3'>
 			@foreach($last_two as $property)
 				@include('common.property_short')
 			@endforeach

@@ -6,7 +6,7 @@
 	<div class="small-12 columns" style="margin-bottom:15px">
 		<div class='row' style="margin-bottom:15px">
 			<div class="medium-1 small-3 columns">
-				<span class="badge badge_style">7</span>
+				<span class="badge badge_style">6</span>
 			</div>
 			<div class="medium-11 small-9 columns">
 				<h4>Rooms</h4>

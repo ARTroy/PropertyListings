@@ -31,20 +31,20 @@
 		</div>
 	</div>
 	<div class="small-12 columns">
-			<label>Property Type
-				<select name="property_type_resi" id='resi_select'>
-					<option value="0" id='resi_unset'>Any</option>
-					@foreach($residential as $type)
-					<option value='{{$type->id}}'>{{$type->type_name}}</option>
-				@endforeach
-				</select>
-				<select name="property_type_comm" id="comm_select" style="display:none" disabled>
-					<option value="0" id='comm_unset' >Any</option>
-					@foreach($commercial as $type)
-					<option value='{{$type->id}}'>{{$type->type_name}}</option>
-				@endforeach
-				</select>
-			</label> 
+		<label>Property Type
+			<select name="property_type_resi" id='resi_select'>
+				<option value="0" id='resi_unset'>Any</option>
+				@foreach($residential as $type)
+				<option value='{{$type->id}}'>{{$type->type_name}}</option>
+			@endforeach
+			</select>
+			<select name="property_type_comm" id="comm_select" style="display:none" disabled>
+				<option value="0" id='comm_unset' >Any</option>
+				@foreach($commercial as $type)
+				<option value='{{$type->id}}'>{{$type->type_name}}</option>
+			@endforeach
+			</select>
+		</label> 
 	</div>
 	<div class="small-12 columns">
 		<label>Priced between <span id="min_slider_span" class="label_input">£ 0</span> - <span  id="max_slider_span" class="label_input">£ 450,000</span></label>	

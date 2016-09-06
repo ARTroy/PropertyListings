@@ -65,17 +65,11 @@
 .icon-construction:before {
   content: "\6b";
 }
-.icon-golf:before {
-  content: "\6c";
-}
 .icon-gym:before {
   content: "\6d";
 }
 .icon-forrest:before {
   content: "\6e";
-}
-.icon-tennis:before {
-  content: "\6f";
 }
 .icon-pool-2:before {
   content: "\70";
@@ -104,12 +98,6 @@
 .icon-office:before {
   content: "\41";
 }
-.icon-house-location:before {
-  content: "\42";
-}
-.icon-house-delete:before {
-  content: "\43";
-}
 .icon-garage:before {
   content: "\44";
 }
@@ -122,35 +110,11 @@
 .icon-hand-house:before {
   content: "\47";
 }
-.icon-house-question:before {
-  content: "\48";
-}
-.icon-house-delete-2:before {
-  content: "\49";
-}
-.icon-house-love:before {
-  content: "\4a";
-}
 .icon-house-swap:before {
   content: "\4b";
 }
 .icon-garden:before {
   content: "\4c";
-}
-.icon-house-favorite:before {
-  content: "\4d";
-}
-.icon-house-plus:before {
-  content: "\4e";
-}
-.icon-sold:before {
-  content: "\4f";
-}
-.icon-house-tick:before {
-  content: "\50";
-}
-.icon-house-protect:before {
-  content: "\51";
 }
 .icon-stairs:before {
   content: "\52";
@@ -166,12 +130,6 @@
 }
 .icon-plot:before {
   content: "\58";
-}
-.icon-basment:before {
-  content: "\59";
-}
-.icon-view-sea:before {
-  content: "\5a";
 }
 .icon-shop:before {
   content: "\30";
@@ -209,14 +167,8 @@
 .icon-factory:before {
   content: "\23";
 }
-.icon-apartment-2:before {
-  content: "\65";
-}
 .icon-toilet:before {
   content: "\71";
-}
-.icon-bathroom:before {
-  content: "\72";
 }
 .icon-games:before {
   content: "\74";
@@ -229,4 +181,7 @@
 }
 .icon-apartment:before {
   content: "\34";
+}
+.icon-bathroom:before {
+  content: "\65";
 }

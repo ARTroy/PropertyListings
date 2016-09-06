@@ -16,6 +16,10 @@ class PropertyController extends Controller
 		return view('public.property');
 	}
 
+	protected $localities_jersey = ['St. Helier','St. Clement','St. Brelade' ,'St. Saviour', 
+	'St. Clement', 'St. Lawrence', 'St. Peter', 'Grouville', 'St. Ouen', 'St. Martin', 
+	'Trinity', 'St. John', 'St. Mary'];
+
 	public function create(){
 		$user = Auth::user();
 		$properties = $user->properties->count();
@@ -28,7 +32,8 @@ class PropertyController extends Controller
 		$residential = PropertyType::where('use', '=', 'Residential')->get();
 		$commercial = PropertyType::where('use', '=', 'Commercial')->get();
 		return view('user.property.create', ['user'=>$user, 
-			'residential'=>$residential, 'commercial'=>$commercial
+			'residential'=>$residential, 'commercial'=>$commercial,
+			'localities'=> $this->localities_jersey
 		]);
 	}
 
@@ -53,7 +58,8 @@ class PropertyController extends Controller
 		$property = Property::findOrFail($property_id);
 		$address = $property->address;
 		return view('user.property.edit',[
-			'user'=>$user, 'property'=>$property, 'address'=>$address
+			'user'=>$user, 'property'=>$property, 'address'=>$address,
+			'localities'=> $this->localities_jersey
 		]);
 	}
 
@@ -113,7 +119,7 @@ class PropertyController extends Controller
 	    	if($request->has('display') ){ $property->display = 1; } else { $property->display = 0; }
 	    	if($request->has('line1')) { $address->line_1 = $request->input('line1'); }
 	    	if($request->has('line2')) { $address->line_2 = $request->input('line2'); }
-	    	if($request->has('line3')) { $address->line_3 = $request->input('line3'); }
+	    	if($request->has('locality')) { $address->locality = $request->input('locality'); }
 	    	if($request->has('postcode')) { $address->postcode = $request->input('postcode'); }
 	    	if($request->has('display') ){ $property->display = 1;  } else { $property->display = 0; }
 
@@ -128,6 +134,7 @@ class PropertyController extends Controller
             'title' => 'required|min:4',
             'property_type' => 'required',
             'line1' => 'required',
+            'locality'=> 'required',
             'postcode' => 'required|min:5|alpha_num_spaces',
             'image' => 'mimes:jpeg,jpg,png,gif',
             'property_type' =>'required|exists:property_type,id',
@@ -173,7 +180,7 @@ class PropertyController extends Controller
 	    	$address->user_id = Auth::user()->id;
 	    	$address->line_1 = $request->input('line1');
 	    	$address->line_2 = $request->input('line2');
-	    	$address->line_3 = $request->input('line3');
+	    	$address->locality = $request->input('locality');
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();

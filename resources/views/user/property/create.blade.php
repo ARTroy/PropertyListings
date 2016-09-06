@@ -100,7 +100,12 @@
 							<label>Line 2<input type="text" name="line2" value="{{ old('line2') }}" ></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label>Line 3<input type="text" name="line3" value="{{ old('line3') }}"></label>
+							<label>Parish<select name="locality" >
+								@foreach($localities as $locality)
+									<option @if( old('locality') == $locality) {{ selected }} @endif >{{ $locality }}</option>
+								@endforeach
+
+							</select></label>
 						</div>
 						<div class="small-12 medium-6 columns">
 							<label>Postcode<input type="text" name="postcode" value="{{ old('postcode') }}" 
