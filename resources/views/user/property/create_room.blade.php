@@ -13,7 +13,11 @@
 			</div>
 		</div>
 		@if(count($property->rooms) > 0)
-		<p>Add as many rooms as your propert has.  Once it has at least one room, you can proceed to your profile, and publish the property.  Once published the property will only have its title, description and price ediable, so make sure everything is up to scratch.</p>
+		<p>Add as many rooms as your propert has.  Once it has at least one room, you can proceed to your profile, and publish the property.  Once published the property will only have its title, description and price ediable, so make sure everything is up to scratch.  <a href="{{action('PropertyController@edit', $property->id)}}" class="button" style="float:right; margin-top:4px;">Back to edit property</a></p>
+		<div class="row">
+			<div class="small-6 columns"></div>
+			<div class="small-6 columns"></div>
+		</div>
 		<table>
 			<thead>
 				<th>Name</th><th>Type</th><th></th>

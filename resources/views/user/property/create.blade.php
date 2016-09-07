@@ -100,20 +100,28 @@
 							<label>Line 2<input type="text" name="line2" value="{{ old('line2') }}" ></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label>Parish<select name="locality" >
-								@foreach($localities as $locality)
-									<option @if( old('locality') == $locality) {{ selected }} @endif >{{ $locality }}</option>
-								@endforeach
-
-							</select></label>
+							<label>Parish / County<input type="text" name="locality" value="{{ old('locality') }}"></label>
 						</div>
 						<div class="small-12 medium-6 columns">
 							<label>Postcode<input type="text" name="postcode" value="{{ old('postcode') }}" 
 							pattern="^[a-zA-Z0-9]{2,5}( )?[a-zA-Z0-9]{2,3}$" required></label>
 						</div>
 						<div class="small-12 medium-6 columns">
-							<label><input type="checkbox" name="display" 
-							@if(!old('display') || old('display') == 'on' ) checked @else  @endif > Display location publicly</label>
+							<label>Country
+								<select name="country">
+								<option @if( old('country') == 832) selected @endif value="832">Jersey</option>
+								<option @if( old('country') == 831) selected @endif value="831">Guernsey</option>
+								<option @if( old('country') == 826) selected @endif value="826">United Kingdom</option>
+								</select>
+							</label>
+						</div>
+						<div class="small-12 medium-6 columns">
+							<label style="margin-top:20px;"">
+								<input type="checkbox" name="display"
+								@if(!old('display') || old('display') == 'on' ) checked  
+								@endif 
+								style="margin-bottom:0px;" 
+							 > Display location publicly</label>
 						</div>
 					</div>
 				</div>
@@ -124,14 +132,16 @@
 					<p>Add your asking price, then save and progress</p>
 				</div>
 				<div class="small-8 medium-8 columns">
-					<div class="small-12 medium-6 columns">
-						<label style="margin-top:15px">Asking price (£)
-						<input type="text" name="asking_value" value="{{ old('asking_value') }}" required pattern='number'></label>
-					</div>
-					<div class="small-12 medium-6 columns">
-						<input type="submit" class="button" {{--  float-center --}}
-							style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
-							value="Save and add rooms" name="" />
+					<div class='row'>
+						<div class="small-12 medium-6 columns">
+							<label style="margin-top:15px">Asking price (£)
+							<input type="text" name="asking_value" value="{{ old('asking_value') }}" required pattern='number'></label>
+						</div>
+						<div class="small-12 medium-6 columns">
+							<input type="submit" class="button" {{--  float-center --}}
+								style=";font-size: 23px; padding: 20px; margin-top: 15px;" 
+								value="Save and add rooms" name="" />
+						</div>
 					</div>
 				</div>
 

@@ -120,6 +120,8 @@ class PropertyController extends Controller
 	    	if($request->has('line1')) { $address->line_1 = $request->input('line1'); }
 	    	if($request->has('line2')) { $address->line_2 = $request->input('line2'); }
 	    	if($request->has('locality')) { $address->locality = $request->input('locality'); }
+	    	if($request->has('country')) { $address->country = $request->input('country'); }
+	    	
 	    	if($request->has('postcode')) { $address->postcode = $request->input('postcode'); }
 	    	if($request->has('display') ){ $property->display = 1;  } else { $property->display = 0; }
 
@@ -181,6 +183,7 @@ class PropertyController extends Controller
 	    	$address->line_1 = $request->input('line1');
 	    	$address->line_2 = $request->input('line2');
 	    	$address->locality = $request->input('locality');
+	    	$address->country = $request->input('country');
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();
