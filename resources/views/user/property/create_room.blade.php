@@ -13,26 +13,29 @@
 			</div>
 		</div>
 		@if(count($property->rooms) > 0)
-		<p>Add as many rooms as your propert has.  Once it has at least one room, you can proceed to your profile, and publish the property.  Once published the property will only have its title, description and price ediable, so make sure everything is up to scratch.  <a href="{{action('PropertyController@edit', $property->id)}}" class="button" style="float:right; margin-top:4px;">Back to edit property</a></p>
+		
 		<div class="row">
-			<div class="small-6 columns"></div>
-			<div class="small-6 columns"></div>
+			<div class="small-5 columns">
+				<table>
+					<thead>
+						<th>Type</th><th></th>
+					</thead>
+					<tbody>
+						@foreach($property->rooms as $room)
+							<tr>
+								<td>{{ $room->roomType->type_name }}</td>
+								<td style="float: right;"><a href='{{action('PropertyController@delete_room', [$property->id, $room->id])}}'
+								style="color:lightcoral;">Delete</a></td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+			<div class="small-7 columns">
+				<p>Add as many rooms as your propert has.  Once it has at least one room, you can proceed to your profile, and publish the property.  Once published the property will only have its title, description and price ediable, so make sure everything is up to scratch.  <a href="{{action('PropertyController@edit', $property->id)}}" class="button" style="float:right; margin-top:4px;">Back to edit property</a></p>
+			</div>
 		</div>
-		<table>
-			<thead>
-				<th>Name</th><th>Type</th><th></th>
-			</thead>
-			<tbody>
-				@foreach($property->rooms as $room)
-					<tr>
-						<td>{{ $room->title }}</td>
-						<td>{{ $room->roomType->type_name }}</td>
-						<td style="float: right;"><a href='{{action('PropertyController@delete_room', [$property->id, $room->id])}}'
-						style="color:lightcoral;">Delete</a></td>
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
+		
 		@endif
 
 	</div>
@@ -42,14 +45,25 @@
 		{{ csrf_field() }}
 		
 		<div class="row">
-			<div class="small-12 medium-6 columns">
-				<label>Title<input type="text" name="title"  value="{{ old('title') }}" required></label>	
+			<div class="small-12  columns" >
+				<p>Room Type</p>
+				<div class='row small-up-2 medium-up-8' >
+					@foreach($property->property_type->validRoomTypes as $type)
+						<div class="column" style="text-align:center;" >
+							<label for="rtype_{{$type->id}}" class='property_type_lable'>	
+								<input type="radio" value='{{$type->id}}' id="rtype_{{$type->id}}" name="room_type_id" required />
+								<i class='{{$type->display_class}} float-center' ></i>
+								{{$type->type_name}}
+							</label>
+						</div>
+					@endforeach
+				</div>
 			</div>
-			<div class="small-12 medium-6 columns">
+			
+			<div class="small-12 medium-12 columns">
+				<p style="margin-top:15px; margin-bottom:10px;">Optional Fields</p>
 				<label>Description<input type="text" name="description"  value="{{ old('description') }}" ></label>	
 			</div>
-		</div>
-		<div class="row">
 			<div class="small-12 medium-6 columns">
 				<label>Image 
 					<button class="file-upload small-12">            
@@ -58,28 +72,13 @@
 				</label>
 			</div>
 			<div class="small-12 medium-3 columns">
-				<label>Width in foot<input type="text" name="size_x"  value="{{ old('size_x') }}" pattern='number'></label>
+				<label>Width in foot<input type="text" name="long_width"  value="{{ old('long_width') }}" pattern='number'></label>
 			</div>
 			<div class="small-12 medium-3 columns">
-				<label>Length in foot<input type="text" name="size_y"  value="{{ old('size_y') }}" pattern='number'></label>
-			</div>
-			
-			<div class="small-12  columns" >
-			<p>Room Type</p>
-			<div class='row small-up-2 medium-up-8' >
-				@foreach($property->property_type->validRoomTypes as $type)
-					<div class="column" style="text-align:center;" >
-						<label for="rtype_{{$type->id}}" class='property_type_lable'>	
-							<input type="radio" value='{{$type->id}}' id="rtype_{{$type->id}}" name="room_type_id" required />
-							<i class='{{$type->display_class}} float-center' ></i>
-							{{$type->type_name}}
-						</label>
-					</div>
-				@endforeach
+				<label>Length in foot<input type="text" name="long_length"  value="{{ old('long_length') }}" pattern='number'></label>
 			</div>
 			<div class="small-12 medium-12 columns">
 				<input style="margin-bottom:0px; margin-top:20px" type="submit" class="button float-center small-6" value="Save">
-			</div>
 			</div>
 		</div>
 	</div>

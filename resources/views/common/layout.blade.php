@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	@include('common.head')
+    	
     </head>
     <body>
         <div class="over" >
@@ -80,5 +80,6 @@
         @endif
 		@yield('content')
         </div>
+    @include('common.scripts')
     </body>
 </html>

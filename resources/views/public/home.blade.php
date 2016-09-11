@@ -15,7 +15,7 @@
 						<p style="margin-bottom:0px; text-align:center;">
 							<i class="fi-mail" style="font-size:50px; position: relative; top:-9px;"></i>
 						</p>
-					</div>2
+					</div>
 				</div>
 				<p>To list your property, enter an invitation code provided to you via email, or during communications with any of our partners.</p>
 

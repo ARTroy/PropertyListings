@@ -59,11 +59,11 @@
 						<td>{{number_format($property->asking_value) }}</td>
 						<td style="padding:0px;">@if($property->status=='new')
 							<a href="{{action('PropertyController@publish', $property->id)}}"
-							style="margin:0px; color:white; width:95%;" class="button"
+							style="margin:0px 0px 1px 0px; color:white; width:95%;" class="button"
 							>Publish</a>
 						@else{{$property->status}}@endif</td>
 						<td style="padding:0px;"><a 
-							style="margin:0px; color:white; width:100%;" class="button"
+							style="margin:0px 0px 1px 0px; color:white; width:100%;" class="button"
 							href="{{action('PropertyController@edit', $property->id) }}"
 						>Edit</a></td>
 					</tr>

@@ -16,6 +16,7 @@ class CreatePropertyTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('title');
+            $table->string('description');
             $table->integer('property_type_id');
             $table->string('legal_ownership');
             $table->string('availability');

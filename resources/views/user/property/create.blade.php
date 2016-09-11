@@ -83,6 +83,9 @@
 								</button>
 							</label>
 						</div>
+						<div class="small-12 medium-12 columns">
+							<label>Description <input type="text" name="description" value="{{ old('description') }}" required></label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -94,7 +97,7 @@
 				<div class="small-8 medium-8 columns">
 					<div class="row">
 						<div class="small-12 medium-6 columns">
-							<label>Line 1<input type="text" name="line1" value="{{ old('line1') }}" required></label>
+							<label>Line 1<input type="text" name="line1" value="{{ old('line1') }}"></label>
 						</div>
 						<div class="small-12 medium-6 columns">
 							<label>Line 2<input type="text" name="line2" value="{{ old('line2') }}" ></label>

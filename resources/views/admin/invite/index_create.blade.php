@@ -4,17 +4,7 @@
 <div class="primary_container">	
 	<div class="row">
 		<div class="small-12 columns">
-			<table>
-				<tbody>
-				@foreach($invites as $invite)
-					<tr>
-						
-						<td>{{$invite->code}}</td>
-						<td>{{$invite->invite_email}}</td>
-					</tr>
-		   		@endforeach
-				</tbody>
-			</table>
+
 			<div class='panel'>
 				<div class="row">
 					<div class="small-12 columns">
@@ -23,10 +13,23 @@
 
 						<form action="{{ action('InviteController@store') }}" method="post" data-abide>{{ csrf_field() }}
 						<div class="row">
-							<div class="small-8 columns">
-								<input type="email" name="invite_email">
+							<div class="small-12 medium-6 columns">
+								<input type="email" name="invite_email" placeholder="email">
 							</div>
-							<div class="small-4 columns">
+							<div class="small-12 medium-4 columns" style="margin-bottom:10px; border:solid lightgrey 1px">
+								<div class="row">
+									<div class="small-2 columns" style="padding-top:15px;">
+										<input type="checkbox" name="auto_accept"/>
+									</div>
+									<div class="small-10 columns" style="padding-top:5px;">
+										Auto Claim for email holding account, provided it exists
+									</div>
+									
+								</div>
+								
+								
+							</div>
+							<div class="small-12 medium-2 columns">
 								<input class="button" type="submit">
 							</div>
 						</div>
@@ -34,7 +37,18 @@
 					</div>
 				</div>
 			</div>
-
+			<p style="margin-top:20px">Current invitation codes</p>
+			<table>
+				<tbody>
+				@foreach($invites as $invite)
+					<tr>
+						<td>{{$invite->code}}</td>
+						<td>{{$invite->invite_email}}</td>
+						<td>@if(!is_null($invite->user_id)) Claimed @else Unclaimed @endif</td>
+					</tr>
+		   		@endforeach
+				</tbody>
+			</table>
 			
 		</div>
 	</div>

@@ -55,20 +55,24 @@ class InviteController extends Controller
 	public function store(Request $request){
     	$userInvite = new UserInvite();
 
-        if($request->has('invite_email') && 
-        	(
+        if($request->has('invite_email') && (
         		strlen(trim($request->input('invite_email'))) > 0 &&
         		filter_var($request->input('invite_email'), FILTER_VALIDATE_EMAIL)
-        	)
-        ){
-        	$user = User::where('email', '=', trim($request->input('invite_email')))->first();
-	        if($user){
-	        	
-	        	$userInvite->invite_email = $request->input('invite_email');
-	        	$userInvite->user_id = $user->id;
-	        	$userInvite->code = str_random(8);
-	        	$userInvite->claimed_at = new DateTime();
-	        	$userInvite->save();
+        )){
+        	if($request->has('auto_accept')) {
+	        	$user = User::where('email', '=', trim($request->input('invite_email')))->first();
+		        if($user){
+		        	$userInvite->invite_email = $request->input('invite_email');
+		        	$userInvite->user_id = $user->id;
+		        	$userInvite->code = str_random(8);
+		        	$userInvite->claimed_at = new DateTime();
+		        	$userInvite->save();
+		        } else {
+		        	$userInvite->code = str_random(8);
+		        	$userInvite->invite_email = $request->input('invite_email');
+		        	$userInvite->user_id = null;
+		        	$userInvite->save();
+		        }
 	        } else {
 	        	$userInvite->code = str_random(8);
 	        	$userInvite->invite_email = $request->input('invite_email');
@@ -77,6 +81,6 @@ class InviteController extends Controller
 	        }
 	        return back()->with('message', 'saved');
         }
-         return back()->withErrors('invite_email required');
+        return back()->withErrors('invite_email required');
 	}
 }

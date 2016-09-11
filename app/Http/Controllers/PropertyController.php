@@ -4,16 +4,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\PropertyType;
+use App\Models\RoomType;
 use App\Models\Address;
 use App\Models\Room;
 use Validator;
 use Image;
 use Auth;
+use DB;
 
 class PropertyController extends Controller
 {
 	public function view($id){
-		return view('public.property');
+		$property = Property::find($id);
+		$types = RoomType::get()->keyBy('id');
+		if($property && $property->status == 'published'){
+
+			return view('public.property',[
+				'property'=>$property,'room_types'=>$types
+			]);
+		} else {
+			abort(404);
+		}
+		
 	}
 
 	protected $localities_jersey = ['St. Helier','St. Clement','St. Brelade' ,'St. Saviour', 
@@ -67,7 +79,6 @@ class PropertyController extends Controller
 		$user = Auth::user();
 		$room = Room::findOrFail($room_id);
 		$property = Property::findOrFail($property_id);
-		dd('in');
 		return view('user.property.edit_rooms',[
 			'user'=>$user, 'property'=>$property,'room'=>$room
 		]);
@@ -101,8 +112,8 @@ class PropertyController extends Controller
 			    	$img2->fit(intval(400), null, function($constraint) {
 			    		 $constraint->aspectRatio();
 			    	});
-			    	$img->save(public_path('images'). '/'. $image_name);
-			    	$img2->save(public_path('images'). '/'. 'thumb_'.$image_name);
+			    	$img->save(public_path('images'). '/'. $property->id.'_'.$image_name);
+			    	$img2->save(public_path('images'). '/'. 'thumb_'.$property->id.'_'.$image_name);
 
 			    	$property->image_file_name =  $image_name;
 			    	$property->image_thumb_file_name = 'thumb_'.$image_name;
@@ -121,7 +132,7 @@ class PropertyController extends Controller
 	    	if($request->has('line2')) { $address->line_2 = $request->input('line2'); }
 	    	if($request->has('locality')) { $address->locality = $request->input('locality'); }
 	    	if($request->has('country')) { $address->country = $request->input('country'); }
-	    	
+
 	    	if($request->has('postcode')) { $address->postcode = $request->input('postcode'); }
 	    	if($request->has('display') ){ $property->display = 1;  } else { $property->display = 0; }
 
@@ -161,16 +172,10 @@ class PropertyController extends Controller
 		    	$img2->fit(intval(350), null, function($constraint) {
 		    		 $constraint->aspectRatio();
 		    	});
-		    	$img->save(public_path('images'). '/'. $image_name);
-		    	$img2->save(public_path('images'). '/'. 'thumb_'.$image_name);
 	    	}
 	    	catch(Exception $e) {
 	    		return back()->withErrors('Image upload failed.');
 	    	}
-	    	
-	    	$property->image_file_name =  $image_name;
-	    	$property->image_thumb_file_name =  'thumb_'.$image_name;
-	    	$property->image_content_type = $img->mime();
 
 	    	$property->user_id = Auth::user()->id;
 	    	$property->asking_value = $request->input('asking_value');
@@ -187,6 +192,16 @@ class PropertyController extends Controller
 	    	$address->postcode = $request->input('postcode');
 	    	$address->property_id = $property->id;
 	    	$address->save();
+
+	    	if(isset($img) && isset($img2)){
+	    		$img->save(public_path('images'). '/'. $property->id.'_'.$image_name);
+	    		$img2->save(public_path('images'). '/'. 'thumb_'.$property->id.'_'.$image_name);
+	    		$property->image_file_name =  $property->id.'_'.$image_name;
+	    		$property->image_thumb_file_name =  'thumb_'.$property->id.'_'.$image_name;
+	    		$property->image_content_type = $img->mime();
+	    		$property->save();
+			}  
+
 	    	return redirect(action('PropertyController@create_rooms', [$property->id]));
         }	
 	}
@@ -206,7 +221,6 @@ class PropertyController extends Controller
 
 	public function update_room(Request $request, $property_id, $room_id){
 		$validator = Validator::make( $request->all(), [
-            'title' => 'required|min:4',
             'image' => 'mimes:jpeg,jpg,png,gif',
         ]);
         
@@ -228,27 +242,28 @@ class PropertyController extends Controller
 			    	$img2->fit(intval(350), null, function($constraint) {
 			    		 $constraint->aspectRatio();
 			    	});
-			    	$img->save(public_path('images'). '/'. $image_name);
-			    	$img2->save(public_path('images'). '/'. 'thumb_'.$image_name);
-			    	$room->image_file_name =  $image_name;
+			    	$img->save(public_path('images'). '/'.  $room->id.'_'.$image_name);
+		    		$img2->save(public_path('images'). '/'.'thumb_'.$room->id.'_'.$image_name);
+
+			    	$room->image_file_name =  $room->id.'_'.$image_name;
+			    	$room->image_thumb_file_name =  $room->id.'_'.$image_name;
 			    	$room->image_content_type = $img->mime();
 		    	}
 		    	catch(Exception $e) {
 		    		return back()->withErrors('Image upload failed.');
 		    	}
 		    }
-		    //Name
-		    $room->title =  $request->input('title');
-        	$room->size_x = $request->input('size_x');
-	    	$room->size_y = $request->input('size_y');
+		    $room->description = $request->input('description');
+        	$room->long_width = $request->input('long_width');
+	    	$room->long_length = $request->input('long_length');
 	    	$room->save();
+
 	    	return redirect(action('PropertyController@edit', [$property->id]))->with('info', 'saved');
         }
 	}
 
 	public function store_rooms(Request $request, Room $room, $property_id){
 		$validator = Validator::make( $request->all(), [
-            'title' => 'required|min:4',
             'image' => 'mimes:jpeg,jpg,png,gif',
             'room_type_id' =>'required|exists:room_type,id'
         ]);
@@ -272,23 +287,27 @@ class PropertyController extends Controller
 			    	$img2->fit(intval(350), null, function($constraint) {
 			    		 $constraint->aspectRatio();
 			    	});
-			    	$img->save(public_path('images'). '/'. $image_name);
-			    	$img2->save(public_path('images'). '/'.'thumb_'. $image_name);
-			    	$room->image_file_name =  $image_name;
-			    	$room->image_thumb_file_name = 'thumb_'.$image_name;
-			    	$room->image_content_type = $img->mime();
 		    	}
 		    	catch(Exception $e) {
 		    		return back()->withErrors('Image upload failed.');
 		    	}
 		    }
-	    	$room->title =  $request->input('title');
-	    	$room->size_x = $request->input('size_x');
-	    	$room->size_y = $request->input('size_y');
+	    	$room->long_width = $request->input('long_width');
+	    	$room->long_length = $request->input('long_length');
 	    	$room->description = $request->input('description');
 	    	$room->room_type_id = $request->input('room_type_id');
 	    	$room->property_id = $property_id;
 	    	$room->save();
+
+	    	if(isset($img) && isset($img2)){
+	    		$img->save(public_path('images'). '/'.  $room->id.'_'.$image_name);
+		    	$img2->save(public_path('images'). '/'.'thumb_'.$room->id.'_'.$image_name);
+		    	$room->image_file_name =  $room->id.'_'.$image_name;
+		    	$room->image_thumb_file_name = 'thumb_'.$room->id.'_'.$image_name;
+		    	$room->image_content_type = $img->mime();
+		    	$room->save();
+			}
+
 	    	return redirect(action('PropertyController@create_rooms', [$property_id]))->with('info', 'Room Saved');
 	    }
 	}

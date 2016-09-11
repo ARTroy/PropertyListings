@@ -16,12 +16,11 @@ class CreateRoomTable extends Migration
             $table->increments('id');
             $table->integer('room_type_id');
             $table->integer('property_id');
-            $table->float('size_x')->nullable(); 
-            $table->float('size_y')->nullable();
+            $table->float('long_length')->nullable(); 
+            $table->float('long_width')->nullable();
             $table->float('square_foot')->nullable(); 
             $table->mediumText('map')->nullable();
-            $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

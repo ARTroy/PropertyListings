@@ -9,10 +9,12 @@
 			<div class="column property_results_col" >
 				<div class="row">
 					<div class="small-12 columns">
-						<h5 style="font-size:18px; padding-right:5px;font-weight:bold; margin-bottom:5px;">3 Oak Tree Lodge</h5>
+						<a href="{{ action('PropertyController@view', $property->id)}}" >
+						<h5 style="font-size:18px; padding-right:5px;font-weight:bold; margin-bottom:5px; color:#65ae87">{{$property->title}}</h5>
+						</a>
 					</div>
 					<div class="small-12 medium-8 columns" >	
-						<img style="width:100%" src="images/{{$property->image_thumb_file_name}}" class="thumbnail " alt="{{$property->property_type->type_name}}">
+						<a href="{{ action('PropertyController@view', $property->id)}}" ><img style="width:100%" src="images/{{$property->image_thumb_file_name}}" class="thumbnail " alt="{{$property->property_type->type_name}}"></a>
 					</div>
 					<div class="small-12 medium-4 columns">
 						<div class="row">	
