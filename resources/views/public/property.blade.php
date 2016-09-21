@@ -28,7 +28,7 @@
 						<li class="orbit-slide" style=" display:block;">
 							<div  style="overflow:hidden; height:inherit;">
 							<img style="max-height:400px; width:initial" class=" float-center" src="/images/{{ $room->image_file_name }}" alt="Space">
-							<figcaption class="orbit-caption">{{$room->title}}</figcaption>
+							<figcaption class="orbit-caption">{{$room_types[$room->room_type_id]->type_name}}</figcaption>
 							</div>
 						</li>
 						{!! ''; $loop_inner_count++!!}
