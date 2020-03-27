@@ -1,0 +1,439 @@
+@font-face {
+    font-family: "railway";
+    src: url("../fonts/Raleway-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "railway-bold";
+    src: url("../fonts/Raleway-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* B1F6CB */
+.header {
+	position: relative;
+    top: 0px;
+    z-index: 999;
+    margin: auto;
+    width: 100%;
+}
+
+body .over  {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: table;
+}
+
+body .primary_container {
+    /*background-color:#2b2826;*/
+    background-color:teal;
+    height: inherit;
+    padding-top:20px;
+}
+
+body .over  * {
+    font-family:railway;
+}
+
+body .over .primary_container * {
+    color:#fff9eb;
+}
+
+body .over .primary_container i {
+    color: #b8aa84;
+}
+
+body .over .numeric_money {
+    padding-right:5px;  font-size:22px; border-top-right-radius: 7px;
+    color:#65ae87; font-weight:bold; display:inline-block; font-family:Arial;
+}
+
+body .over .results_container  {
+    color:#65ae87;
+}
+body .over .results_container i  {
+    /*text-shadow: 0px  0px 5px lightseagreen;*/
+    color:#65ae87;
+}
+
+body .over .numeric_money.money_cover {
+    position: relative; top: -50px; left:3px; margin: 0px; padding-left:1px; background-color:white; 
+}
+
+body .over .form-error, body .over  .primary_container .is-invalid-label {
+    color: lightcoral;
+}
+body .over h4 {
+    border-bottom: 2px solid #b8aa84;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+body .is-invalid-input:not(:focus) {
+    border-color: lightcoral;
+    border-width:2px;
+    background-color:white;
+}
+body .is-invalid-input {
+    background-color:white;
+}
+body input[type=file] {
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+    padding: 5px;
+}
+
+body .over .primary_container  input[type=file]{
+    color:#2b2826;
+}
+
+body ul{
+    margin-bottom:0px;
+}
+
+body h1, body h2, body h3,body h4, body h5 {
+	font-family:railway-bold;
+}
+
+body .primary_container .label_input{
+    display: inline;
+    width: 78px;
+    margin-bottom: 0px;
+    padding: 0px;
+    outline: none;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    font-family:Arial;
+    font-size: 14px;
+    height: initial;
+}
+
+body .slider-handle {
+        background-color:#65ae87
+}
+
+body .slider-handle:hover {
+        background-color:seagreen
+}
+
+i.arrowheader {
+    font-size: 25px;
+    top: -5px;
+    position: relative;
+}
+
+i.clipheader {
+    margin: 5px;
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 6px #73b592;
+    font-size: 30px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    padding-bottom: 12px;
+    top: -5px;
+    position: relative;
+    line-height: 1;
+}
+
+p.linkheader {
+    display: inline-block;
+    font-size: 20px;
+    position: relative;
+    padding-right: 3px;
+}
+
+i.househeader {
+    margin:5px;
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 6px #73b592;
+    font-size: 30px;
+    padding-left: 5px;
+    padding-right: 7px;
+    
+}
+i.arrowheader:before,
+i.househeader:before,
+p.linkheader:before,
+i.clipheader:before {
+    top:5px;
+    position: relative;
+}
+
+body .header .nav {
+    background-color: #fffaf5;
+    min-height: 30px;
+    border-bottom: solid #65ae87;
+    /*box-shadow: 0px 1px 3px 2px seagreen;*/
+}
+
+body .header .nav *{
+    color:#b8aa84;
+}
+
+body .header .nav .alert.callout *{
+    color:indianred;
+}
+
+div.alert ul {
+    margin-bottom: 0px;
+}
+
+.title_panel {
+    border-bottom: solid 2px #b8aa84;
+    margin-bottom: 15px;
+}
+
+body .over .primary_container *.alternative {
+    color:#b8aa84;
+    font-weight: bold;
+}
+
+body .over .primary_container .title_panel p{
+    padding-left: 8px;
+}
+
+body .over .primary_container .title_panel h4 {
+    border-bottom: initial;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+body .over  .primary_container input[type=text], body .over .primary_container select, body .over  .primary_container option{
+    color:teal;
+}
+
+body .over  .primary_container input[type=checkbox]{
+    zoom: 2;
+    vertical-align: top;
+}
+
+body .primary_container .panel {
+    padding:20px;
+    border: solid 3px #73b592;
+    background-color:white;
+}
+body .primary_container .panel i,body .primary_container .panel * {
+    color:#2b2826;
+    /* #918155;*/
+}
+
+body .panel .hero-invite{
+    max-height: 20px; 
+    width:62px; 
+    background-color:#b8aa84;
+    border-radius:30px; 
+    position: relative; 
+    top: -38px; 
+    min-height:60px;
+}
+
+body .white table {
+    border: #eeeeee 2px solid;
+}
+
+body .panel .status_pro {
+    height:124px;
+}
+
+body .panel .sidebutton {
+    background-color: #73b592;
+    line-height: initial;
+    text-align: center;
+}
+
+body .panel .sidebutton a {
+    display: block;
+    height: 100%;
+    padding-top: 25%;
+}
+
+body .panel .sidebutton i {
+    font-size:45px;
+    color: white;
+}
+
+body .button,
+body .buttong button.button:last-child, 
+body .buttong button.button:first-child {
+    background-color: #65ae87;
+}
+
+body .button:hover,body .button:focus,body .button:active {
+    background-color: seagreen;
+}
+
+body .row.divide_row{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #b8aa84;
+}
+
+body .row.divide_row .badge.badge_style{
+    background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px; font-family: sans-serif;
+}
+
+body .primary_container .badge.badge_style{
+    background-color:#65ae87; color:white; font-size:25px; margin-bottom:10px; font-family: sans-serif;
+}
+
+body .buttong button.button:last-child:hover,
+body .buttong button.button:last-child:hover, {
+     background-color: #65ae87;
+}
+
+body .sidebutton:hover {
+    background-color:seagreen;
+}
+
+body .buttong{
+    margin-top:40px;
+}
+
+body .buttong .button{
+    font-size:18px; width: 100%
+}
+
+body .buttong button.button.selected:last-child,
+body .buttong button.button.selected:first-child {
+    background-color:seagreen;
+}
+
+body .buttong.buttongn {
+    margin-top:0px;
+}
+
+body .buttong.buttongn .button {
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+
+body .panel .propcreate {
+    
+}
+body .primary_container button.button {
+    background-color: #65ae87;
+    color:white;
+}
+
+body .primary_container .panel .button {
+    background-color: #65ae87;
+    color:white;
+}
+
+body .primary_container .panel h4 {
+    border-bottom: solid 2px #b8aa84;
+}
+
+body .primary_container table td {
+    font-family: Arial;
+        font-size: 14px;
+}
+
+body .over .primary_container table *  {
+   color:#2b2826
+}
+
+
+body label.property_type_lable i {
+    font-size: 48px;
+    display: block;
+    height: 65px;
+    overflow: hidden;
+    width: 48px;
+}
+
+body label.property_type_lable i {
+    font-size: 48px;
+    display: block;
+    height: 65px;
+    overflow: hidden;
+    width: 48px;
+}
+
+body label.property_type_lable i:before {
+    position: relative;
+    right: 5px;
+}
+
+/************ Overrides for particaular icons ***************/
+
+body .over label.property_type_lable .icon-lounge {
+    font-size: 52px;
+}
+
+body .over label.property_type_lable .icon-bed {
+    font-size: 47px; padding-left: 2px; padding-top:2px;
+}
+
+body .over label.property_type_lable .icon-room {
+    font-size: 60px;  padding-top:2px;
+}
+
+
+body label.property_type_lable > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+
+body label.property_type_lable > input ~ i{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+body label.property_type_lable > input:checked ~ i{ /* (RADIO CHECKED) IMAGE STYLES */
+    color:white;
+}
+
+body label.property_type_lable > input:checked ~ p{ /* (RADIO CHECKED) IMAGE STYLES */
+    color:white;
+}
+
+body .primary_container .panel label.property_type_lable > input:checked ~ i { /* (RADIO CHECKED) IMAGE STYLES */
+    color:#b8aa84;
+}
+
+body .primary_container .panel label.property_type_lable > input:checked ~ p {/* (RADIO CHECKED) IMAGE STYLES */
+    color:#b8aa84;
+}
+
+body .primary_container .panel label.property_type_lable > .icon-room {
+    font-size: 68px;
+    font-weight: bold;
+    width: 60px;
+}
+
+body label.property_type_lable i.icon-room:before {
+        position: relative;
+    right: 7px;
+    top: -7px;
+}
+
+body .dynamic_float {
+    padding-top:18px;
+    float: right;
+}
+
+@media only screen and (max-width: 40em) {    
+    body .over  .dynamic_float {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        float:none;
+    }
+    body .panel .status_pro {
+        height:160px;
+    }
+    body .primary_container{
+        padding-top: 5px;
+    }
+}

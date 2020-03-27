@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Session;
 use Illuminate\Support\Facades\Auth;
 
 class Authenticate
@@ -21,7 +22,7 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                return redirect()->guest('/')->withErrors('You need to be logged in to view this page.');
             }
         }
 
